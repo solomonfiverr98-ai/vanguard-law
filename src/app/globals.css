@@ -4,30 +4,16 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --navy: #0A1128;
+    --gold: #D4AF37;
+    --background: #FFFFFF;
+    --surface: #FDFCFB;
+    --border: #E9E5DE;
     --radius: 0.5rem;
   }
 
   body {
-    @apply font-body bg-white text-darkText;
+    @apply font-body bg-white text-[#0A1128] selection:bg-gold/30 selection:text-navy;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -37,35 +23,44 @@
 
 @layer components {
   .section-label {
-    @apply text-[11px] font-semibold text-gold uppercase tracking-[0.25em] block mb-4;
+    @apply text-[11px] font-bold text-gold uppercase tracking-[0.3em] block mb-6 font-body;
   }
 
   .nav-link {
-    @apply text-sm text-[#4A4A6A] hover:text-navy transition-colors font-body;
+    @apply text-[13px] font-medium text-navy/60 hover:text-navy transition-all font-body relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-gold after:transition-all hover:after:w-full;
   }
 
   .btn-gold {
-    @apply bg-gold text-white rounded-full px-6 py-2 font-semibold hover:brightness-110 transition-all active:scale-95;
-  }
-
-  .btn-navy {
-    @apply bg-navy text-white rounded-full px-6 py-2 font-semibold hover:brightness-110 transition-all active:scale-95;
+    @apply bg-gold text-white rounded-full px-8 py-3 text-sm font-bold hover:bg-navy transition-all active:scale-95 shadow-lg shadow-gold/10 hover:shadow-navy/10;
   }
 
   .btn-outline {
-    @apply border border-[#E5E2DC] text-navy rounded-full px-6 py-2 font-semibold hover:border-gold transition-all active:scale-95;
+    @apply border border-border text-navy rounded-full px-8 py-3 text-sm font-bold hover:border-gold hover:text-gold transition-all active:scale-95;
+  }
+
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
   }
 }
 
-/* GSAP Hidden on Load */
+/* GSAP Utilities */
 .gsap-reveal {
   opacity: 0;
-  visibility: hidden;
+  transform: translateY(30px);
+}
+
+.text-mask {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.text-mask-content {
+  display: inline-block;
+  transform: translateY(110%);
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -73,5 +68,17 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-[#E5E2DC] rounded-full hover:bg-gold transition-colors;
+  @apply bg-border rounded-full hover:bg-gold transition-colors;
+}
+
+/* Smooth Image Loading */
+.img-reveal {
+  scale: 1.1;
+  filter: blur(10px);
+  transition: scale 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.img-reveal.loaded {
+  scale: 1;
+  filter: blur(0);
 }

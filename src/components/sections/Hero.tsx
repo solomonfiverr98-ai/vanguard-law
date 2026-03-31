@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -10,121 +11,164 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const headlineRef = useRef<HTMLHeadingElement>(null);
-  const subtextRef = useRef<HTMLParagraphElement>(null);
-  const buttonsRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
+  const portraitRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
-      tl.from(".hero-bg", {
-        scale: 1.1,
-        duration: 2.5,
-        ease: "power2.out",
+      // Initial reveal
+      tl.from(".hero-bg-accent", {
+        opacity: 0,
+        scale: 0.8,
+        duration: 2,
+        ease: "expo.out",
       });
 
-      tl.from(".headline-word", {
-        y: 100,
-        opacity: 0,
-        rotateX: -20,
-        stagger: 0.15,
-        duration: 1.2,
-      }, "-=2");
+      // Text Masking Reveal
+      tl.from(".mask-reveal", {
+        y: "110%",
+        stagger: 0.1,
+        duration: 1.5,
+        ease: "power4.out",
+      }, "-=1.5");
 
-      tl.from(subtextRef.current, {
-        y: 20,
-        opacity: 0,
-        duration: 1,
-      }, "-=0.8");
-
-      tl.from(buttonsRef.current, {
-        y: 20,
-        opacity: 0,
-        duration: 0.8,
-      }, "-=0.6");
-
-      tl.from(".stat-item", {
-        y: 20,
+      tl.from(".fade-up", {
+        y: 40,
         opacity: 0,
         stagger: 0.1,
-        duration: 0.8,
-      }, "-=0.4");
+        duration: 1.2,
+      }, "-=1");
+
+      // Portrait Parallax & Scale
+      gsap.from(portraitRef.current, {
+        y: 100,
+        opacity: 0,
+        scale: 0.95,
+        duration: 2,
+        ease: "power3.out",
+        delay: 0.5,
+      });
+
+      // Floating animation for portrait
+      gsap.to(portraitRef.current, {
+        y: -20,
+        duration: 4,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+
     }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
-  const stats = [
-    { value: "$50M+", label: "Recovered for Clients" },
-    { value: "2,500+", label: "Cases Won" },
-    { value: "95%", label: "Success Rate" },
-    { value: "20+", label: "Years Combined Experience" },
-  ];
-
   return (
-    <section ref={containerRef} className="relative h-[100dvh] w-full bg-navy overflow-hidden flex flex-col justify-end">
-      {/* Background Image with Overlay */}
-      <div 
-        className="hero-bg absolute inset-0 bg-cover bg-center pointer-events-none"
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1600')" }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-navy/95 via-navy/88 to-navy/60 pointer-events-none" />
+    <section 
+      ref={containerRef} 
+      className="relative min-h-[110dvh] w-full bg-navy overflow-hidden flex items-center pt-32 pb-20"
+    >
+      {/* Dynamic Background Accents */}
+      <div className="hero-bg-accent absolute top-[-10%] right-[-10%] w-[60%] h-[80%] bg-gold/10 blur-[150px] rounded-full pointer-events-none" />
+      <div className="hero-bg-accent absolute bottom-[-20%] left-[-10%] w-[50%] h-[70%] bg-navy/40 blur-[120px] rounded-full pointer-events-none border border-gold/5" />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full pb-20 md:pb-24">
-        <div className="max-w-4xl">
-          <span className="flex items-center gap-2 text-gold font-bold text-[11px] tracking-[0.3em] uppercase mb-6 gsap-reveal">
-            <Scale className="w-4 h-4" /> Trusted Legal Representation
-          </span>
+      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 w-full flex flex-col lg:flex-row items-center gap-16 lg:gap-8">
+        
+        {/* Left: Text Content (Asymmetrical) */}
+        <div className="w-full lg:w-[60%] order-2 lg:order-1">
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-gold/20 bg-gold/5 mb-8 fade-up">
+            <div className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+            <span className="text-gold text-[10px] md:text-[11px] font-bold tracking-[0.3em] uppercase">
+              Premier Legal Excellence
+            </span>
+          </div>
 
-          <h1 ref={headlineRef} className="text-[#FFFFFF] font-heading font-bold leading-[0.9] overflow-hidden mb-8">
-            <span className="inline-block headline-word text-[clamp(56px,8.5vw,96px)]">Fighting For</span>{" "}
-            <br className="hidden md:block" />
-            <span className="inline-block headline-word text-[clamp(56px,8.5vw,96px)]">What Matters</span>{" "}
-            <br className="hidden md:block" />
-            <span className="inline-block headline-word text-[clamp(56px,8.5vw,96px)] italic text-gold">Most.</span>
+          <h1 className="text-white font-heading font-black leading-[0.85] tracking-tighter mb-10">
+            <div className="overflow-hidden">
+              <span className="mask-reveal inline-block text-[clamp(64px,11vw,140px)] select-none">
+                PRECISION
+              </span>
+            </div>
+            <div className="overflow-hidden mt-[-0.1em]">
+              <span className="mask-reveal inline-block text-[clamp(64px,11vw,140px)] italic text-gold select-none">
+                {"// POWER"}
+              </span>
+            </div>
           </h1>
 
-          <p ref={subtextRef} className="text-white/70 font-body text-lg md:text-xl max-w-xl mb-12 leading-relaxed">
-            Experienced attorneys dedicated to protecting your rights and securing 
-            the results you deserve. We stand by you every step of the way.
+          <p className="text-white/60 font-body text-lg md:text-xl max-w-xl mb-12 leading-[1.6] fade-up">
+            Vanguard Law provides elite strategic defense for those who demand 
+            uncompromising results. We don&apos;t just practice law—we define it.
           </p>
 
-          <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-5 mb-16">
+          <div className="flex flex-wrap gap-6 fade-up">
             <Link
               href="#contact"
-              className="bg-gold hover:brightness-110 text-white rounded-full px-10 py-5 text-lg font-bold transition-all flex items-center justify-center gap-3 active:scale-95 shadow-xl shadow-gold/20"
+              className="group relative bg-gold text-white px-10 py-5 rounded-full text-sm font-bold uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-2xl shadow-gold/30"
             >
-              Get Free Consultation
-              <ArrowRight className="w-5 h-5" />
+              Start Free Consultation
             </Link>
             <Link
-              href="#results"
-              className="border border-white/40 hover:border-gold text-white rounded-full px-10 py-5 text-lg font-bold transition-all flex items-center justify-center gap-3 active:scale-95"
+              href="#expertise"
+              className="group flex items-center gap-4 px-8 py-5 rounded-full border border-white/10 text-white/80 text-sm font-bold uppercase tracking-widest hover:border-gold hover:text-white transition-all backdrop-blur-sm"
             >
-              View Our Results
+              Explore Expertise
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
             </Link>
           </div>
 
-          {/* Stats Bar */}
-          <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 pt-12 border-t border-white/10">
-            {stats.map((stat, i) => (
-              <div key={i} className="stat-item relative">
-                <div className="text-gold font-heading text-3xl md:text-4xl font-bold mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-white/40 font-body text-[10px] md:text-xs uppercase tracking-wider">
-                  {stat.label}
-                </div>
-                {i < stats.length - 1 && (
-                  <div className="hidden md:block absolute -right-6 top-1/2 -translate-y-1/2 w-px h-8 bg-gold/30" />
-                )}
-              </div>
-            ))}
+          {/* Luxury Trust Stats */}
+          <div className="grid grid-cols-3 gap-8 mt-20 pt-10 border-t border-white/5 fade-up">
+             <div>
+                <div className="text-3xl font-heading font-black text-white">$250M+</div>
+                <div className="text-[10px] text-white/40 uppercase tracking-widest mt-1">Recovered</div>
+             </div>
+             <div>
+                <div className="text-3xl font-heading font-black text-white">99%</div>
+                <div className="text-[10px] text-white/40 uppercase tracking-widest mt-1">Success Rate</div>
+             </div>
+             <div>
+                <div className="text-3xl font-heading font-black text-white">24/7</div>
+                <div className="text-[10px] text-white/40 uppercase tracking-widest mt-1">Availability</div>
+             </div>
           </div>
         </div>
+
+        {/* Right: Attorney Portrait Cutout */}
+        <div className="w-full lg:w-[40%] order-1 lg:order-2 flex justify-center lg:justify-end">
+          <div ref={portraitRef} className="relative w-full max-w-[500px] aspect-[4/5]">
+            {/* Portrait Placeholder Background */}
+            <div className="absolute inset-x-0 bottom-0 top-[20%] bg-gradient-to-t from-gold/20 via-transparent to-transparent rounded-[40px] opacity-50 blur-[40px]" />
+            
+            <Image 
+              src="/attorney_portrait_hero_1774992019271.png"
+              alt="Vanguard Attorneys" 
+              fill
+              className="object-cover relative z-10 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform -scale-x-100"
+            />
+            
+            {/* Floating Luxury Badge */}
+            <div className="absolute -bottom-6 -left-6 z-20 bg-white/10 backdrop-blur-2xl border border-white/10 p-6 rounded-2xl shadow-2xl">
+               <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-gold flex items-center justify-center shadow-lg shadow-gold/20">
+                     <Scale className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <div className="text-white font-bold text-sm tracking-tight">Best Law Firm</div>
+                    <div className="text-white/40 text-[10px] uppercase tracking-widest">2026 Nominee</div>
+                  </div>
+               </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-10 left-12 hidden lg:flex items-center gap-6">
+         <div className="w-px h-20 bg-gradient-to-b from-transparent via-gold/50 to-gold" />
+         <span className="text-gold text-[10px] font-bold uppercase tracking-[0.4em] rotate-180 [writing-mode:vertical-lr]">Scroll</span>
       </div>
     </section>
   );
