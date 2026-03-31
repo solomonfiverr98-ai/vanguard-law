@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "brand_name": "Vanguard Law",
+    "tagline": "Fighting for what matters most.",
+    "description": "Premium law firm brand tokens for UI implementation.",
+    "design_direction": "Light mode — clean white, professional, authoritative, trustworthy"
+  },
+  "colors": {
+    "background": {
+      "DEFAULT": "#FFFFFF",
+      "surface": "#F8F7F5",
+      "surface2": "#F0EDE8"
+    },
+    "primary": {
+      "DEFAULT": "#1B2A4A",
+      "hover": "#243558",
+      "foreground": "#FFFFFF"
+    },
+    "accent": {
+      "DEFAULT": "#C9A84C",
+      "hover": "#D4B660",
+      "foreground": "#FFFFFF"
+    },
+    "text": {
+      "primary": "#1A1A2E",
+      "secondary": "#4A4A6A",
+      "muted": "#8A8AA0",
+      "white": "#FFFFFF"
+    },
+    "border": {
+      "DEFAULT": "#E5E2DC",
+      "dark": "#1B2A4A",
+      "accent": "#C9A84C"
+    },
+    "success": "#10B981",
+    "destructive": "#EF4444"
+  },
+  "typography": {
+    "font_family_headings": ["Cormorant Garamond", "serif"],
+    "font_family_body": ["Plus Jakarta Sans", "sans-serif"],
+    "font_weight_bold": "700",
+    "font_weight_semibold": "600",
+    "font_weight_normal": "400",
+    "font_weight_light": "300"
+  },
+  "ui": {
+    "border_radius_default": "0.5rem",
+    "border_radius_large": "1rem",
+    "border_radius_xl": "1.5rem",
+    "border_radius_full": "9999px",
+    "spacing_base_unit": "4px"
+  },
+  "design_language": {
+    "style": "Clean professional light mode with authoritative navy and gold accents",
+    "mood": "Trustworthy, authoritative, professional, serious, competent",
+    "hero": "Full bleed courtroom or justice imagery with navy overlay and bold white headline",
+    "sections": "Clean white backgrounds, generous whitespace, editorial typography",
+    "avoid": "Dark mode, casual fonts, bright colors, wellness patterns, fitness patterns, real estate patterns"
+  }
+}
