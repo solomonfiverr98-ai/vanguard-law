@@ -67,7 +67,7 @@ const Hero = () => {
   return (
     <section 
       ref={containerRef} 
-      className="relative min-h-[110dvh] w-full bg-navy overflow-hidden flex items-center pt-32 pb-20"
+      className="relative min-h-[90dvh] w-full bg-navy overflow-hidden flex items-center pt-24 pb-12"
     >
       {/* Dynamic Background Accents */}
       <div className="hero-bg-accent absolute top-[-10%] right-[-10%] w-[60%] h-[80%] bg-gold/10 blur-[150px] rounded-full pointer-events-none" />
@@ -119,7 +119,7 @@ const Hero = () => {
           </div>
 
           {/* Luxury Trust Stats */}
-          <div className="grid grid-cols-3 gap-8 mt-20 pt-10 border-t border-white/5 fade-up">
+          <div className="grid grid-cols-3 gap-8 mt-16 pt-10 border-t border-white/5 fade-up">
              <div>
                 <div className="text-3xl font-heading font-black text-white">$250M+</div>
                 <div className="text-[10px] text-white/40 uppercase tracking-widest mt-1">Recovered</div>
@@ -142,9 +142,10 @@ const Hero = () => {
             <div className="absolute inset-x-0 bottom-0 top-[20%] bg-gradient-to-t from-gold/20 via-transparent to-transparent rounded-[40px] opacity-50 blur-[40px]" />
             
             <Image 
-              src="/attorney_portrait_hero_1774992019271.png"
+              src="/attorney_portrait_hero_clean.png"
               alt="Vanguard Attorneys" 
               fill
+              priority
               className="object-cover relative z-10 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform -scale-x-100"
             />
             

@@ -67,9 +67,9 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
 
 export const FAQ = () => {
   return (
-    <section id="faq" className="bg-white py-24 md:py-32">
+    <section id="faq" className="bg-white py-16 md:py-24">
       <div className="max-w-4xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <span className="section-label">General Questions</span>
           <h2 className="text-navy text-4xl md:text-6xl font-bold font-heading">Frequently asked.</h2>
         </div>
@@ -85,7 +85,7 @@ export const FAQ = () => {
 
 export const Footer = () => {
   return (
-    <footer className="bg-surface pt-24 pb-12 border-t border-border">
+    <footer className="bg-surface pt-16 pb-12 border-t border-border">
       <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
         <div className="md:col-span-1">
           <div className="flex items-center gap-3 mb-6">

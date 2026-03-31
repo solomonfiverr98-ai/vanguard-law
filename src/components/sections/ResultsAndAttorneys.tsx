@@ -50,14 +50,14 @@ export const ResultsStats = () => {
   }, []);
 
   return (
-    <section id="results" ref={containerRef} className="bg-surface py-32 md:py-48 relative overflow-hidden">
+    <section id="results" ref={containerRef} className="bg-surface py-20 md:py-32 relative overflow-hidden">
       {/* Decorative Text */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 text-navy/[0.03] text-[20vw] font-black pointer-events-none select-none uppercase tracking-tighter">
         Results
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <div className="mb-24 text-center">
+        <div className="mb-20 text-center">
             <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-navy/10 bg-navy/5 mb-8">
               <TrendingUp className="w-3.5 h-3.5 text-navy/60" />
               <span className="text-navy/60 text-[10px] font-bold tracking-[0.3em] uppercase">Uncompromising Victories</span>
@@ -171,9 +171,9 @@ export const Attorneys = () => {
   ];
 
   return (
-    <section id="attorneys" ref={containerRef} className="bg-white py-32 md:py-48 overflow-hidden relative">
+    <section id="attorneys" ref={containerRef} className="bg-white py-20 md:py-32 overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <div className="mb-24 flex flex-col lg:flex-row lg:items-end justify-between gap-12">
+        <div className="mb-20 flex flex-col lg:flex-row lg:items-end justify-between gap-12">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-navy/10 bg-navy/5 mb-8">
               <Users className="w-3.5 h-3.5 text-navy/60" />

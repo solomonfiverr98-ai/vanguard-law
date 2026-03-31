@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect } from "react";
 import Link from "next/link";
-import { Scale, ShieldCheck, Sparkles, Gavel } from "lucide-react";
+import { Scale, ShieldCheck, Sparkles, Gavel, Globe } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -60,9 +60,9 @@ export const PracticeAreas = () => {
   }, []);
 
   return (
-    <section id="expertise" ref={containerRef} className="bg-white py-32 md:py-48 overflow-hidden">
+    <section id="expertise" ref={containerRef} className="bg-white py-20 md:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-12">
+        <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-12">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-navy/10 bg-navy/5 mb-8">
               <Scale className="w-3.5 h-3.5 text-navy/60" />
@@ -134,10 +134,10 @@ export const PracticeAreas = () => {
             <div className="absolute top-[-20%] right-[-20%] w-48 h-48 bg-white/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
 
-          {/* Small Cards Row */}
+          {/* Bottom Row - Perfectly Balanced */}
           <div className="bento-card md:col-span-4 rounded-[2.5rem] border border-navy/5 p-10 flex flex-col justify-between hover:shadow-xl transition-all">
              <div className="text-gold font-black text-xs uppercase tracking-widest mb-4">Practice 04</div>
-             <h4 className="text-navy text-2xl font-heading font-black tracking-tight">Family Legacy</h4>
+             <h4 className="text-navy text-2xl font-heading font-black tracking-tight">Family Law</h4>
              <p className="text-navy/50 text-sm mt-4">Guardianship and elite asset management during family transitions.</p>
           </div>
 
@@ -146,6 +146,15 @@ export const PracticeAreas = () => {
              <h4 className="text-white text-2xl font-heading font-black tracking-tight group-hover:text-gold transition-colors">Immigration</h4>
              <div className="w-full h-px bg-white/10 my-6" />
              <p className="text-white/40 text-sm italic">&quot;Precision at the border of freedom.&quot;</p>
+          </div>
+
+          <div className="bento-card md:col-span-4 rounded-[2.5rem] bg-gold/5 border border-gold/20 p-10 flex flex-col justify-between group overflow-hidden transition-all duration-500 hover:bg-gold/10">
+             <div className="text-gold font-black text-xs uppercase tracking-widest mb-4">Practice 06</div>
+             <h4 className="text-navy text-2xl font-heading font-black tracking-tight">Global Assets</h4>
+             <p className="text-navy/60 text-sm mt-4">Protecting international interests with surgical precision.</p>
+             <div className="absolute -bottom-4 -right-4 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+                <Globe className="w-32 h-32" />
+             </div>
           </div>
         </div>
       </div>
