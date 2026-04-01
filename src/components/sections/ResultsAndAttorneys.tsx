@@ -80,65 +80,65 @@ export const ResultsStats = () => {
           </div>
 
           {/* Right Column: The Monolith Composition */}
-          <div className="lg:col-span-12 xl:col-span-7 relative flex justify-center lg:justify-end min-h-[700px]">
+          <div className="lg:col-span-12 xl:col-span-7 relative flex flex-col items-center lg:items-end min-h-[700px] lg:min-h-[850px]">
              
              {/* THE MAIN MONOLITH: $250M+ */}
-             <div className="monolith-layer absolute top-0 right-0 lg:right-12 z-20 select-none">
-                <div className="relative group">
-                   {/* Ghost Shadow Text */}
-                   <span className="absolute -inset-2 text-[clamp(100px,18vw,280px)] font-heading font-black tracking-tighter text-gold/5 blur-sm select-none pointer-events-none">
+             <div className="monolith-layer relative lg:absolute top-0 right-0 z-20 select-none mb-12 lg:mb-0">
+                <div className="relative group text-right lg:text-right">
+                   {/* Ghost Shadow Text - Adjusted opacity and blur */}
+                   <span className="absolute -inset-x-8 -top-12 text-[clamp(120px,22vw,320px)] font-heading font-black tracking-tighter text-gold/[0.03] blur-md select-none pointer-events-none whitespace-nowrap">
                       $250M+
                    </span>
                    {/* Main Text with Subtle Gradient */}
-                   <h3 className="relative text-[clamp(100px,18vw,280px)] font-heading font-black tracking-tighter leading-none text-white transition-transform duration-700 group-hover:-translate-y-2">
+                   <h3 className="relative text-[clamp(100px,14vw,240px)] font-heading font-black tracking-tighter leading-[0.75] text-white transition-transform duration-700 group-hover:-translate-y-2">
                       $250M<span className="text-gold scale-110 inline-block">+</span>
                    </h3>
-                   <div className="text-right mt-[-0.5em] pr-4">
-                      <div className="text-[clamp(10px,1.5vw,18px)] font-bold text-gold uppercase tracking-[0.6em]">Recovered for the injured</div>
+                   <div className="mt-2 pr-4">
+                      <div className="text-[clamp(10px,1.2vw,16px)] font-bold text-gold uppercase tracking-[0.6em]">Restored to our clients</div>
                    </div>
                 </div>
              </div>
 
-             {/* DOSSIER CARD: $14.2M */}
-             <div className="monolith-layer absolute top-[40%] left-0 lg:-left-20 w-full max-w-lg glass-morphism p-10 md:p-14 rounded-[3.5rem] shadow-[0_60px_120px_rgba(0,0,0,0.5)] border border-white/5 z-30 group hover:-rotate-1 transition-all duration-1000">
+             {/* DOSSIER CARD: $14.2M - Fixed positioning and increased visibility */}
+             <div className="monolith-layer absolute top-[35%] left-0 lg:left-0 xl:-left-32 w-full max-w-lg glass-morphism p-10 md:p-14 rounded-[3.5rem] shadow-[0_60px_120px_rgba(0,0,0,0.6)] border border-white/10 z-30 group hover:-rotate-1 transition-all duration-1000 backdrop-blur-3xl">
                 <div className="flex items-center justify-between mb-12">
-                   <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10">
+                   <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center border border-gold/20">
                       <Scale className="w-8 h-8 text-gold" />
                    </div>
                    <div className="text-right font-mono">
-                      <div className="text-[10px] text-white/30 mb-1">CERTIFIED DOCKET</div>
-                      <div className="text-xs text-gold">#VG-2026-ARCHIVE-14.2</div>
+                      <div className="text-[10px] text-white/30 mb-1 tracking-widest uppercase font-black">Certified Docket</div>
+                      <div className="text-xs text-gold">#VG-2026-ARC-142</div>
                    </div>
                 </div>
                 
                 <div className="space-y-4 mb-12">
-                   <div className="text-sm font-bold text-gold uppercase tracking-widest">Victory Case 03.2026</div>
-                   <div className="text-6xl md:text-8xl font-heading font-black text-white tracking-tighter">$14.2M</div>
-                   <div className="text-lg font-medium text-white/40 italic leading-tight">Full Policy Policy-Limit Settlement</div>
+                   <div className="text-sm font-bold text-gold uppercase tracking-[0.3em]">Victory Case 03.2026</div>
+                   <div className="text-6xl md:text-8xl font-heading font-black text-white tracking-tighter leading-none">$14.2M</div>
+                   <div className="text-xl font-medium text-white/50 leading-tight">Full Policy Policy-Limit Landscape Restoration</div>
                 </div>
 
                 <div className="pt-8 border-t border-white/5 flex items-center justify-between">
                    <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                      <span className="text-[10px] font-black text-white/20 uppercase tracking-widest">Verified Restoration</span>
+                      <div className="w-2.5 h-2.5 rounded-full bg-gold animate-pulse" />
+                      <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.4em]">Verified Archive</span>
                    </div>
-                   <div className="p-2 rounded-full hover:bg-gold/10 transition-colors cursor-help">
+                   <div className="p-3 rounded-full bg-white/5 hover:bg-gold/20 transition-all cursor-help group-hover:scale-110">
                       <ArrowRight className="w-5 h-5 text-gold" />
                    </div>
                 </div>
              </div>
 
              {/* SEAL OF AUTHORITY: 2,500+ */}
-             <div className="monolith-layer absolute bottom-0 right-0 lg:right-20 w-64 h-64 md:w-80 md:h-80 bg-[#0A1128] rounded-full border border-gold/20 shadow-[0_40px_80px_rgba(0,0,0,0.4)] z-40 flex items-center justify-center p-8 text-center group hover:scale-105 transition-transform duration-1000 overflow-hidden">
+             <div className="monolith-layer absolute -bottom-10 right-0 lg:-right-10 xl:right-10 w-64 h-64 md:w-80 md:h-80 bg-navy rounded-full border border-gold/30 shadow-[0_40px_100px_rgba(0,0,0,0.6)] z-40 flex items-center justify-center p-8 text-center group hover:scale-105 transition-transform duration-1000 overflow-hidden backdrop-blur-xl">
                 {/* Rotating Inner Border */}
-                <div className="absolute inset-2 border border-gold/10 rounded-full border-dashed animate-[spin_20s_linear_infinite] pointer-events-none" />
+                <div className="absolute inset-4 border border-gold/10 rounded-full border-dashed animate-[spin_30s_linear_infinite] pointer-events-none" />
                 
                 <div className="relative z-10 transition-transform duration-700 group-hover:scale-110">
-                   <div className="text-5xl md:text-7xl font-heading font-black text-white tracking-tighter mb-2">2,500<span className="text-gold">+</span></div>
-                   <div className="text-[10px] md:text-xs font-bold text-gold uppercase tracking-[0.4em] leading-tight">Successful <br/> Litigations</div>
+                   <div className="text-5xl md:text-8xl font-heading font-black text-white tracking-tighter mb-2">2,500<span className="text-gold">+</span></div>
+                   <div className="text-[10px] md:text-xs font-bold text-gold uppercase tracking-[0.5em] leading-tight">Elite Legal <br/> Victories</div>
                    
-                   <div className="mt-8 text-[9px] text-white/30 font-medium max-w-[120px] mx-auto leading-relaxed border-t border-white/5 pt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                      &ldquo;Dominating the legal architectural landscape.&rdquo;
+                   <div className="mt-8 text-[9px] text-white/30 font-medium max-w-[140px] mx-auto leading-relaxed border-t border-white/5 pt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                      &ldquo;Dominating the architectural litigation landscape.&rdquo;
                    </div>
                 </div>
              </div>
