@@ -135,23 +135,23 @@ export const PracticeAreas = () => {
           </div>
 
           {/* Bottom Row - Perfectly Balanced */}
-          <div className="bento-card md:col-span-4 rounded-[2.5rem] border border-navy/5 p-10 flex flex-col justify-between hover:shadow-xl transition-all">
-             <div className="text-gold font-black text-xs uppercase tracking-widest mb-4">Practice 04</div>
-             <h4 className="text-navy text-2xl font-heading font-black tracking-tight">Family Law</h4>
-             <p className="text-navy/50 text-sm mt-4">Guardianship and elite asset management during family transitions.</p>
+          <div className="bento-card md:col-span-4 rounded-[3rem] border border-navy/5 p-10 flex flex-col justify-between hover:shadow-xl transition-all bg-white group">
+             <h4 className="text-navy text-2xl font-heading font-black tracking-tight group-hover:text-gold transition-colors">Family Law</h4>
+             <p className="text-navy/50 text-sm mt-4 leading-relaxed">Guardianship and elite asset management during complex family transitions and high-net-worth divorce.</p>
           </div>
 
-          <div className="bento-card md:col-span-4 rounded-[2.5rem] bg-navy p-10 flex flex-col justify-between group">
-             <div className="text-gold/50 font-black text-xs uppercase tracking-widest mb-4">Practice 05</div>
+          <div className="bento-card md:col-span-4 rounded-[3rem] bg-navy p-10 flex flex-col justify-between group">
              <h4 className="text-white text-2xl font-heading font-black tracking-tight group-hover:text-gold transition-colors">Immigration</h4>
              <div className="w-full h-px bg-white/10 my-6" />
-             <p className="text-white/40 text-sm italic">&quot;Precision at the border of freedom.&quot;</p>
+             <div className="space-y-4">
+               <p className="text-white/60 text-sm leading-relaxed">Navigating professional visa pathways and high-net-worth residency with diplomatic precision.</p>
+               <p className="text-gold/40 text-sm italic font-body">&quot;Precision at the border of freedom.&quot;</p>
+             </div>
           </div>
 
-          <div className="bento-card md:col-span-4 rounded-[2.5rem] bg-gold/5 border border-gold/20 p-10 flex flex-col justify-between group overflow-hidden transition-all duration-500 hover:bg-gold/10">
-             <div className="text-gold font-black text-xs uppercase tracking-widest mb-4">Practice 06</div>
-             <h4 className="text-navy text-2xl font-heading font-black tracking-tight">Global Assets</h4>
-             <p className="text-navy/60 text-sm mt-4">Protecting international interests with surgical precision.</p>
+          <div className="bento-card md:col-span-4 rounded-[3rem] bg-gold/5 border border-gold/20 p-10 flex flex-col justify-between group overflow-hidden transition-all duration-500 hover:bg-gold/10">
+             <h4 className="text-navy text-2xl font-heading font-black tracking-tight group-hover:text-gold transition-colors">Global Assets</h4>
+             <p className="text-navy/60 text-sm mt-4 leading-relaxed">Protecting international interests and offshore structures with surgical precision and global reach.</p>
              <div className="absolute -bottom-4 -right-4 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
                 <Globe className="w-32 h-32" />
              </div>

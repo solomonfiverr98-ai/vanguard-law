@@ -30,11 +30,21 @@ const config: Config = {
       },
       animation: {
         pulseOpacity: 'pulseOpacity 4s ease-in-out infinite',
+        marquee: 'marquee 40s linear infinite',
+        'bounce-subtle': 'bounce-subtle 3s ease-in-out infinite',
       },
       keyframes: {
         pulseOpacity: {
           '0%, 100%': { opacity: '0.8' },
           '50%': { opacity: '1' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        'bounce-subtle': {
+          '0%, 100%': { transform: 'translateY(-5%)' },
+          '50%': { transform: 'translateY(0)' },
         },
       },
     },

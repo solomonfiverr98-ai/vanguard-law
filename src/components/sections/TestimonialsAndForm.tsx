@@ -12,24 +12,28 @@ export const Testimonials = () => {
       text: "Vanguard Law fought for me when I felt completely alone. They secured a $380,000 settlement for my injury case. I cannot thank them enough.",
       name: "David R.",
       case: "Personal Injury Client",
+      initials: "DR",
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100",
     },
     {
       text: "Facing criminal charges was the most terrifying experience of my life. The team at Vanguard Law had all charges dropped. They are exceptional.",
       name: "Anonymous",
       case: "Criminal Defense Client",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100",
+      initials: "A",
+      image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=100", // High-end house background for anonymous
     },
     {
       text: "Our business faced a serious contract dispute. Vanguard Law resolved it efficiently and saved us from a costly legal battle.",
       name: "Jennifer M.",
       case: "Corporate Law Client",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100",
+      initials: "JM",
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100", // Real professional headshot
     },
     {
       text: "They handled my divorce with compassion and professionalism. My children and I got the outcome we needed. Forever grateful.",
       name: "Maria S.",
       case: "Family Law Client",
+      initials: "MS",
       image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100",
     },
   ];
@@ -70,8 +74,14 @@ export const Testimonials = () => {
                     </blockquote>
                     
                     <div className="flex items-center gap-4">
-                       <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-gold/40">
-                          <Image src={testi.image} alt={testi.name} fill className="object-cover" />
+                       <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-gold/40 bg-gold flex items-center justify-center">
+                          {testi.image && !testi.name.includes("Anonymous") ? (
+                            <Image src={testi.image} alt={testi.name} fill className="object-cover" />
+                          ) : (
+                            <span className="text-white font-bold text-xl uppercase tracking-tighter">
+                              {testi.initials || testi.name[0]}
+                            </span>
+                          )}
                        </div>
                        <div className="text-left">
                           <div className="text-navy font-bold text-lg font-body">{testi.name}</div>
@@ -166,11 +176,11 @@ export const FreeConsultation = () => {
         <div className="text-center mb-16 lg:mb-20">
           <span className="section-label text-gold">Free Consultation</span>
           <h2 className="text-white text-5xl md:text-7xl font-bold font-heading leading-tight mb-8">
-            Your case deserves<br />
+            Your case deserves <br />
             <span className="italic text-gold">expert attention.</span>
           </h2>
           <p className="text-white/60 text-lg md:text-xl font-body max-w-2xl mx-auto leading-relaxed">
-            Your case deserves expert attention. Schedule a free, confidential consultation with one of our experienced attorneys. 
+            Schedule a free, confidential consultation with one of our experienced attorneys. 
             No obligation. No upfront fees.
           </p>
         </div>

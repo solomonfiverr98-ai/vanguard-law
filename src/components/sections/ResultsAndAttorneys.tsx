@@ -171,7 +171,7 @@ export const Attorneys = () => {
   ];
 
   return (
-    <section id="attorneys" ref={containerRef} className="bg-white py-20 md:py-32 overflow-hidden relative">
+    <section id="attorneys" ref={containerRef} className="bg-white pb-20 md:pb-32 overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="mb-20 flex flex-col lg:flex-row lg:items-end justify-between gap-12">
           <div className="max-w-2xl">
@@ -189,11 +189,11 @@ export const Attorneys = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {attorneys.map((atty, i) => (
             <div 
               key={i} 
-              className="attorney-card group relative h-[650px] overflow-hidden rounded-[3rem] shadow-2xl transition-all duration-700 hover:-translate-y-4 shadow-navy/5"
+              className="attorney-card group relative h-[650px] w-full overflow-hidden rounded-[3rem] shadow-2xl transition-all duration-700 hover:-translate-y-4 shadow-navy/5"
             >
               {/* Portrait Image */}
               <div className="absolute inset-0 z-0">
