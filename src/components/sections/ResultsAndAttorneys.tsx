@@ -10,40 +10,31 @@ gsap.registerPlugin(ScrollTrigger);
 
 export const ResultsStats = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const mainCountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
+      gsap.from(".result-card", {
+        y: 60,
+        opacity: 0,
+        stagger: 0.2,
+        duration: 1.5,
+        ease: "power4.out",
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top 70%",
         }
       });
 
-      tl.from(".result-card", {
-        y: 60,
+      // Massive background text reveal
+      gsap.from(".bg-reveal", {
+        scale: 1.1,
         opacity: 0,
-        stagger: 0.15,
-        duration: 1.5,
-        ease: "power4.out",
-      });
-
-      // Count up animation for $250M+
-      const countObj = { val: 0 };
-      gsap.to(countObj, {
+        duration: 2,
+        ease: "power2.out",
         scrollTrigger: {
-          trigger: mainCountRef.current,
-          start: "top 85%",
-        },
-        val: 250,
-        duration: 3,
-        ease: "expo.out",
-        onUpdate: () => {
-          if (mainCountRef.current) {
-            mainCountRef.current.innerText = `$${Math.floor(countObj.val)}M+`;
-          }
-        },
+          trigger: containerRef.current,
+          start: "top 80%",
+        }
       });
     }, containerRef);
     return () => ctx.revert();
@@ -51,75 +42,95 @@ export const ResultsStats = () => {
 
   return (
     <section id="results" ref={containerRef} className="bg-surface py-20 md:py-32 relative overflow-hidden">
-      {/* Decorative Text */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 text-navy/[0.03] text-[20vw] font-black pointer-events-none select-none uppercase tracking-tighter">
-        Results
+      {/* Decorative Ghost Text - More Subtle */}
+      <div className="absolute top-0 left-0 text-navy/[0.02] text-[25vw] font-black pointer-events-none select-none uppercase tracking-tighter leading-none -translate-x-1/4 -translate-y-1/4">
+        Victory
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <div className="mb-20 text-center">
+        <div className="mb-24">
             <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-navy/10 bg-navy/5 mb-8">
               <TrendingUp className="w-3.5 h-3.5 text-navy/60" />
-              <span className="text-navy/60 text-[10px] font-bold tracking-[0.3em] uppercase">Uncompromising Victories</span>
+              <span className="text-navy/60 text-[10px] font-bold tracking-[0.3em] uppercase transition-all hover:tracking-[0.4em] cursor-default">Uncompromising Victories</span>
             </div>
-            <h2 className="text-navy text-[clamp(40px,6vw,90px)] font-heading font-black tracking-tighter leading-[0.9]">
+            <h2 className="text-navy text-[clamp(40px,7vw,100px)] font-heading font-black tracking-tighter leading-[0.85]">
               The Currency of <br />
               <span className="text-gold italic underline decoration-gold/20 underline-offset-8">Excellence.</span>
             </h2>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-10">
-          {/* Main Card: Massive Result */}
-          <div className="result-card lg:w-[65%] glass-morphism rounded-[2.5rem] p-16 relative overflow-hidden group shadow-[0_40px_100px_rgba(10,17,40,0.08)]">
-            <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[80%] bg-gold/5 blur-[100px] pointer-events-none" />
-            
-            <div className="relative z-10">
-               <div ref={mainCountRef} className="text-navy font-heading text-[clamp(80px,15vw,180px)] font-black tracking-tighter leading-none mb-4">
-                 $0M+
-               </div>
-               <h3 className="text-2xl md:text-3xl font-heading font-black text-navy/80 uppercase tracking-tight mb-8">Recovered for injury clients</h3>
-               <p className="text-navy/50 text-lg md:text-xl max-w-xl leading-relaxed font-body">
-                 Vanguard Law specializes in high-stakes personal injury litigation. Our 
-                 unwavering pursuit of maximum restoration has defined our legacy of victory.
-               </p>
-               
-               <div className="mt-12 flex items-center gap-6">
-                  <div className="w-12 h-12 rounded-full border-2 border-gold flex items-center justify-center">
-                    <Scale className="w-5 h-5 text-gold" />
-                  </div>
-                  <span className="text-navy text-sm font-bold uppercase tracking-widest">Case Victory: 03.2026 // $14.2M Policy Settlement</span>
-               </div>
-            </div>
-          </div>
-
-          {/* Secondary Stats Group */}
-          <div className="lg:w-[35%] flex flex-col gap-8">
-            <div className="result-card bg-navy rounded-[2.5rem] p-10 text-white shadow-2xl flex flex-col justify-between group">
-               <div className="flex justify-between items-start">
-                  <div className="w-14 h-14 bg-white shadow-xl rounded-2xl flex items-center justify-center transition-transform group-hover:-translate-y-2">
-                    <Users className="w-7 h-7 text-navy" />
-                  </div>
-                  <div className="text-gold font-black text-xs uppercase tracking-[0.3em]">Cases Won</div>
-               </div>
-               <div className="mt-12">
-                  <div className="text-5xl font-heading font-black text-white">2,500+</div>
-                  <div className="w-12 h-1 bg-gold mt-4 rounded-full" />
-               </div>
+        <div className="relative min-h-[600px] flex items-center">
+            {/* The Big Number - Architectural Anchor */}
+            <div className="absolute inset-0 flex items-center justify-center z-0 opacity-[0.03] select-none pointer-events-none bg-reveal">
+                <span className="text-[35vw] font-heading font-black tracking-tighter text-navy leading-none">250M</span>
             </div>
 
-            <div className="result-card bg-white border border-navy/5 rounded-[2.5rem] p-10 flex flex-col justify-between group shadow-sm hover:shadow-2xl transition-all duration-700">
-               <div className="flex justify-between items-start">
-                  <div className="w-14 h-14 bg-navy shadow-xl rounded-2xl flex items-center justify-center transition-transform group-hover:-translate-y-2">
-                    <TrendingUp className="w-7 h-7 text-white" />
-                  </div>
-                  <div className="text-navy/40 font-black text-xs uppercase tracking-[0.3em]">Success Rate</div>
-               </div>
-               <div className="mt-12">
-                  <div className="text-5xl font-heading font-black text-navy">99.4%</div>
-                  <div className="w-12 h-1 bg-gold mt-4 rounded-full" />
-               </div>
+            <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                {/* Left Column: Context & Branding */}
+                <div className="lg:col-span-5 space-y-10">
+                    <div className="space-y-6">
+                        <div className="result-card">
+                            <div className="text-gold font-bold text-xs uppercase tracking-[0.4em] mb-4">Global Impact</div>
+                            <h3 className="text-navy font-heading text-[clamp(60px,10vw,120px)] font-black tracking-tighter leading-none">
+                                $250M+ <br/>
+                                <span className="text-2xl md:text-3xl text-navy/40 font-heading block mt-4">Recovered for injury clients.</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <p className="result-card text-navy/50 text-xl leading-relaxed max-w-md font-body">
+                        Vanguard Law specializes in high-stakes personal injury litigation. Our 
+                        unwavering pursuit of maximum restoration has defined our legacy of victory.
+                    </p>
+                    
+                    <div className="result-card flex items-center gap-4 text-navy/30 text-[10px] font-black uppercase tracking-[0.3em]">
+                        <span className="w-12 h-[1px] bg-navy/10"></span>
+                        <span>Established Excellence</span>
+                    </div>
+                </div>
+
+                {/* Right Column: Layered Proof Points */}
+                <div className="lg:col-span-7 relative h-[500px] lg:h-[600px] mt-12 lg:mt-0">
+                    {/* Floating Policy Card */}
+                    <div className="result-card absolute top-4 right-0 w-full max-w-md glass-morphism p-10 md:p-14 rounded-[3rem] shadow-[0_50px_100px_rgba(10,17,40,0.12)] border-l-8 border-gold z-20 group hover:-translate-y-4 transition-all duration-700">
+                        <div className="flex items-center justify-between mb-10 text-gold">
+                            <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center border border-gold/20">
+                                <Scale className="w-8 h-8" />
+                            </div>
+                            <div className="text-right">
+                                <div className="text-[10px] font-black uppercase tracking-widest text-navy/40 mb-1">Case ID</div>
+                                <div className="text-xs font-bold text-navy">#VG-2026-14M</div>
+                            </div>
+                        </div>
+                        
+                        <div className="space-y-2">
+                            <div className="text-6xl md:text-7xl font-heading font-black text-navy tracking-tighter">$14.2M</div>
+                            <div className="text-lg font-bold text-gold uppercase tracking-[0.2em]">Policy Settlement</div>
+                        </div>
+                        
+                        <div className="mt-12 pt-8 border-t border-navy/5 flex justify-between items-center text-[10px] font-black text-navy/30 uppercase tracking-tighter">
+                            <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                                <span>Certified Result // 03.2026</span>
+                            </div>
+                            <span className="hover:text-gold transition-colors cursor-help">Verify Docket</span>
+                        </div>
+                    </div>
+
+                    {/* Supporting Stat Badge */}
+                    <div className="result-card absolute bottom-4 left-0 lg:-left-20 bg-navy p-12 md:p-16 rounded-[3rem] text-white shadow-[0_40px_80px_rgba(10,17,40,0.4)] z-30 flex flex-col md:flex-row items-center gap-10 hover:scale-[1.02] transition-transform duration-700">
+                        <div className="text-center md:text-left md:border-r md:border-white/10 md:pr-12">
+                            <div className="text-7xl font-heading font-black text-white tracking-tighter">2,500<span className="text-gold">+</span></div>
+                            <div className="text-[10px] font-bold text-gold uppercase tracking-[0.4em] mt-2">Cases Won</div>
+                        </div>
+                        <div className="max-w-[180px] text-sm text-white/50 leading-relaxed font-medium text-center md:text-left italic">
+                            "A decade of absolute advocacy and strategic dominance."
+                        </div>
+                    </div>
+
+                    {/* Decorative Elements */}
+                    <div className="absolute -bottom-10 -right-10 w-40 h-40 border-r border-b border-navy/5 pointer-events-none"></div>
+                </div>
             </div>
-          </div>
         </div>
       </div>
     </section>

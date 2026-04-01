@@ -8,6 +8,7 @@ import { FAQ, Footer } from "@/components/sections/FAQAndFooter";
 export default function Home() {
   return (
     <main className="min-h-screen bg-white selection:bg-gold/30 selection:text-navy">
+      {/* 2026-04-01: Results Refactoring Applied */}
       <Navbar />
       <Hero />
       <TrustBar />
