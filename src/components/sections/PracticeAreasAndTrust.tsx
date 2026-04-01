@@ -66,7 +66,7 @@ export const PracticeAreas = () => {
   }, []);
 
   return (
-    <section id="expertise" ref={containerRef} className="bg-white py-24 md:py-40 overflow-hidden relative">
+    <section id="expertise" ref={containerRef} className="bg-white pt-24 pb-48 md:pt-40 md:pb-64 overflow-hidden relative z-20">
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none overflow-hidden">
         <div className="absolute top-[10%] left-[-10%] w-full h-full border border-navy rotate-12" />
         <div className="absolute top-[20%] left-[-20%] w-full h-full border border-navy -rotate-12" />
@@ -181,18 +181,21 @@ export const PracticeAreas = () => {
             </div>
           </div>
 
-          {/* Card: Family Law */}
-          <div className="bento-card md:col-span-4 relative group overflow-hidden rounded-[3rem] bg-white border border-navy/5 p-12 flex flex-col justify-between hover:shadow-xl transition-all duration-700">
+          {/* Card: Family Law - Navy Contrast */}
+          <div className="bento-card md:col-span-4 relative group overflow-hidden rounded-[3rem] bg-navy shadow-[0_40px_80px_rgba(10,17,40,0.3)] p-12 flex flex-col justify-between hover:shadow-2xl transition-all duration-700 border border-white/5">
              <div className="h-full flex flex-col">
-                <div className="w-12 h-px bg-gold mb-10" />
-                <h3 className="text-navy text-3xl font-heading font-black tracking-tight group-hover:text-gold transition-colors mb-6 uppercase">Family Law</h3>
-                <p className="text-navy/50 text-sm leading-relaxed mb-10 font-body">
+                <div className="flex items-center justify-between mb-10">
+                  <div className="w-12 h-px bg-gold/50" />
+                  <div className="text-[9px] font-black text-gold uppercase tracking-[0.4em]">Private Client</div>
+                </div>
+                <h3 className="text-white text-3xl font-heading font-black tracking-tight group-hover:text-gold transition-colors mb-6 uppercase">Family Law</h3>
+                <p className="text-white/60 text-sm leading-relaxed mb-10 font-body">
                   Guardianship and elite asset management during complex family transitions and high-net-worth divorce.
                 </p>
                 <div className="space-y-4 mb-auto">
                    <div className="flex flex-wrap gap-2">
                       {["High-Net Divorce", "Asset Shielding", "Legacy Planning"].map(tag => (
-                        <span key={tag} className="px-3 py-1 bg-navy/5 text-navy/40 text-[9px] font-bold uppercase tracking-widest rounded-full">{tag}</span>
+                        <span key={tag} className="px-3 py-1 bg-white/5 text-white/50 text-[9px] font-bold uppercase tracking-widest rounded-full border border-white/10">{tag}</span>
                       ))}
                    </div>
                 </div>
@@ -229,31 +232,31 @@ export const PracticeAreas = () => {
              </div>
           </div>
 
-          {/* Card: Global Assets */}
-          <div className="bento-card md:col-span-4 relative group overflow-hidden rounded-[3rem] bg-gold/5 border border-gold/20 p-12 flex flex-col justify-between hover:bg-gold transition-all duration-700">
+          {/* Card: Global Assets - Enhanced Contrast */}
+          <div className="bento-card md:col-span-4 relative group overflow-hidden rounded-[3rem] bg-navy p-12 flex flex-col justify-between hover:shadow-[0_40px_100px_rgba(212,175,55,0.2)] transition-all duration-700 border border-white/10">
              <div 
-               className="absolute inset-0 bg-cover bg-center opacity-5 group-hover:opacity-10 transition-opacity grayscale hover:grayscale-0" 
+               className="absolute inset-0 bg-cover bg-center opacity-10 group-hover:opacity-25 transition-all duration-1000 grayscale hover:grayscale-0 scale-110 group-hover:scale-100" 
                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800')" }}
              />
              <div className="relative z-10">
-                <div className="inline-flex py-1 px-3 rounded bg-gold text-white text-[8px] font-black uppercase tracking-[0.2em] mb-6">Offshore Mastery</div>
-                <h3 className="text-navy group-hover:text-white text-3xl font-heading font-black tracking-tight transition-colors mb-6 uppercase">Global Assets</h3>
-                <p className="text-navy/50 group-hover:text-white/70 text-sm leading-relaxed mb-8 font-body">
+                <div className="inline-flex py-1 px-3 rounded bg-gold text-white text-[8px] font-black uppercase tracking-[0.2em] mb-6 shadow-xl shadow-gold/20">Offshore Mastery</div>
+                <h3 className="text-gold text-3xl font-heading font-black tracking-tight mb-6 uppercase">Global Assets</h3>
+                <p className="text-white/60 text-sm leading-relaxed mb-8 font-body">
                   Protecting international interests and offshore structures with surgical precision.
                 </p>
                 <div className="space-y-2">
                    {["Offshore Trusts", "Asset Recovery", "Multi-Jurisdiction"].map(s => (
-                     <div key={s} className="flex items-center gap-2 text-navy/40 group-hover:text-white/40 text-[9px] font-bold uppercase tracking-widest">
-                       <div className="w-3 h-px bg-gold/50 group-hover:bg-white/40" /> {s}
+                     <div key={s} className="flex items-center gap-2 text-white/40 group-hover:text-gold/60 text-[9px] font-bold uppercase tracking-widest transition-colors">
+                       <div className="w-3 h-px bg-gold/30" /> {s}
                      </div>
                    ))}
                 </div>
              </div>
              <div className="relative z-10 mt-auto flex items-end justify-between">
-                <Link href="#contact" className="group/btn flex items-center gap-4 text-gold group-hover:text-white text-[10px] font-bold uppercase tracking-[0.3em] transition-all hover:gap-6">
+                <Link href="#contact" className="group/btn flex items-center gap-4 text-gold text-[10px] font-bold uppercase tracking-[0.3em] transition-all hover:gap-6">
                   Inquire Case <ArrowRight className="w-3 h-3 transition-transform group-hover/btn:translate-x-1" />
                 </Link>
-                <Globe className="w-16 h-16 text-gold/10 group-hover:text-white/10 transition-colors" />
+                <Globe className="w-16 h-16 text-gold/5 group-hover:text-gold/20 transition-all duration-700 group-hover:rotate-12" />
              </div>
           </div>
         </div>

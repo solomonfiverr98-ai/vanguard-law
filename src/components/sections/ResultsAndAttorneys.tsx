@@ -40,10 +40,10 @@ export const ResultsStats = () => {
   }, []);
 
   return (
-    <section id="results" ref={containerRef} className="bg-navy py-32 md:py-48 relative overflow-hidden">
+    <section id="results" ref={containerRef} className="bg-navy pt-52 pb-32 md:pt-64 md:pb-48 relative overflow-hidden mt-[-1px] z-10">
       {/* Architectural Background Layers */}
-      <div className="absolute inset-0 z-0">
-        <div className="parallax-bg absolute top-0 left-0 text-white/[0.01] text-[40vw] font-black pointer-events-none select-none uppercase tracking-tighter leading-none -translate-x-1/4 -translate-y-1/4 whitespace-nowrap">
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="parallax-bg absolute top-80 left-0 text-white/[0.01] text-[40vw] font-black pointer-events-none select-none uppercase tracking-tighter leading-none -translate-x-1/4 whitespace-nowrap">
           Victory
         </div>
         <div className="parallax-bg absolute bottom-0 right-0 text-white/[0.01] text-[35vw] font-black pointer-events-none select-none uppercase tracking-tighter leading-none translate-x-1/4 translate-y-1/4 whitespace-nowrap">
