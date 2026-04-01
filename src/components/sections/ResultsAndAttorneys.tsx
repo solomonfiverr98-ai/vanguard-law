@@ -13,11 +13,11 @@ export const ResultsStats = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".result-card", {
-        y: 60,
+      gsap.from(".monolith-layer", {
+        y: 100,
         opacity: 0,
-        stagger: 0.2,
-        duration: 1.5,
+        stagger: 0.15,
+        duration: 2,
         ease: "power4.out",
         scrollTrigger: {
           trigger: containerRef.current,
@@ -25,15 +25,14 @@ export const ResultsStats = () => {
         }
       });
 
-      // Massive background text reveal
-      gsap.from(".bg-reveal", {
-        scale: 1.1,
-        opacity: 0,
-        duration: 2,
-        ease: "power2.out",
+      // Subtle parallax for background text
+      gsap.to(".parallax-bg", {
+        y: -100,
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 80%",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
         }
       });
     }, containerRef);
@@ -41,96 +40,110 @@ export const ResultsStats = () => {
   }, []);
 
   return (
-    <section id="results" ref={containerRef} className="bg-surface py-20 md:py-32 relative overflow-hidden">
-      {/* Decorative Ghost Text - More Subtle */}
-      <div className="absolute top-0 left-0 text-navy/[0.02] text-[25vw] font-black pointer-events-none select-none uppercase tracking-tighter leading-none -translate-x-1/4 -translate-y-1/4">
-        Victory
+    <section id="results" ref={containerRef} className="bg-navy py-32 md:py-48 relative overflow-hidden">
+      {/* Architectural Background Layers */}
+      <div className="absolute inset-0 z-0">
+        <div className="parallax-bg absolute top-0 left-0 text-white/[0.01] text-[40vw] font-black pointer-events-none select-none uppercase tracking-tighter leading-none -translate-x-1/4 -translate-y-1/4 whitespace-nowrap">
+          Victory
+        </div>
+        <div className="parallax-bg absolute bottom-0 right-0 text-white/[0.01] text-[35vw] font-black pointer-events-none select-none uppercase tracking-tighter leading-none translate-x-1/4 translate-y-1/4 whitespace-nowrap">
+          250M
+        </div>
+        
+        {/* Subtle radial glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] h-[100vw] bg-gold/[0.03] rounded-full blur-[120px] pointer-events-none" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <div className="mb-24">
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-navy/10 bg-navy/5 mb-8">
-              <TrendingUp className="w-3.5 h-3.5 text-navy/60" />
-              <span className="text-navy/60 text-[10px] font-bold tracking-[0.3em] uppercase transition-all hover:tracking-[0.4em] cursor-default">Uncompromising Victories</span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
+          
+          {/* Left Column: The Narrative */}
+          <div className="lg:col-span-12 xl:col-span-5 space-y-12 mb-20 lg:mb-0">
+            <div className="monolith-layer">
+              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-gold/20 bg-gold/5 mb-8">
+                <TrendingUp className="w-3.5 h-3.5 text-gold" />
+                <span className="text-gold text-[10px] font-bold tracking-[0.4em] uppercase">Uncompromising Victories</span>
+              </div>
+              <h2 className="text-white text-[clamp(48px,9vw,120px)] font-heading font-black tracking-tighter leading-[0.8] mb-10">
+                The Currency <br />
+                Of <span className="text-gold italic decoration-gold/20 underline underline-offset-[16px]">Excellence.</span>
+              </h2>
+              <p className="text-white/40 text-xl md:text-2xl leading-relaxed max-w-xl font-body font-light">
+                Vanguard Law specializes in high-stakes litigation where restoration is not a request, but a requirement. Our legacy is written in the absolute advocacy of our clients.
+              </p>
             </div>
-            <h2 className="text-navy text-[clamp(40px,7vw,100px)] font-heading font-black tracking-tighter leading-[0.85]">
-              The Currency of <br />
-              <span className="text-gold italic underline decoration-gold/20 underline-offset-8">Excellence.</span>
-            </h2>
-        </div>
 
-        <div className="relative min-h-[600px] flex items-center">
-            {/* The Big Number - Architectural Anchor */}
-            <div className="absolute inset-0 flex items-center justify-center z-0 opacity-[0.03] select-none pointer-events-none bg-reveal">
-                <span className="text-[35vw] font-heading font-black tracking-tighter text-navy leading-none">250M</span>
+            <div className="monolith-layer flex items-center gap-6">
+               <div className="h-px w-20 bg-gold/30" />
+               <span className="text-gold/40 text-[10px] font-black uppercase tracking-[0.5em]">Established Excellence</span>
             </div>
+          </div>
 
-            <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-                {/* Left Column: Context & Branding */}
-                <div className="lg:col-span-5 space-y-10">
-                    <div className="space-y-6">
-                        <div className="result-card">
-                            <div className="text-gold font-bold text-xs uppercase tracking-[0.4em] mb-4">Global Impact</div>
-                            <h3 className="text-navy font-heading text-[clamp(60px,10vw,120px)] font-black tracking-tighter leading-none">
-                                $250M+ <br/>
-                                <span className="text-2xl md:text-3xl text-navy/40 font-heading block mt-4">Recovered for injury clients.</span>
-                            </h3>
-                        </div>
-                    </div>
-                    <p className="result-card text-navy/50 text-xl leading-relaxed max-w-md font-body">
-                        Vanguard Law specializes in high-stakes personal injury litigation. Our 
-                        unwavering pursuit of maximum restoration has defined our legacy of victory.
-                    </p>
-                    
-                    <div className="result-card flex items-center gap-4 text-navy/30 text-[10px] font-black uppercase tracking-[0.3em]">
-                        <span className="w-12 h-[1px] bg-navy/10"></span>
-                        <span>Established Excellence</span>
-                    </div>
+          {/* Right Column: The Monolith Composition */}
+          <div className="lg:col-span-12 xl:col-span-7 relative flex justify-center lg:justify-end min-h-[700px]">
+             
+             {/* THE MAIN MONOLITH: $250M+ */}
+             <div className="monolith-layer absolute top-0 right-0 lg:right-12 z-20 select-none">
+                <div className="relative group">
+                   {/* Ghost Shadow Text */}
+                   <span className="absolute -inset-2 text-[clamp(100px,18vw,280px)] font-heading font-black tracking-tighter text-gold/5 blur-sm select-none pointer-events-none">
+                      $250M+
+                   </span>
+                   {/* Main Text with Subtle Gradient */}
+                   <h3 className="relative text-[clamp(100px,18vw,280px)] font-heading font-black tracking-tighter leading-none text-white transition-transform duration-700 group-hover:-translate-y-2">
+                      $250M<span className="text-gold scale-110 inline-block">+</span>
+                   </h3>
+                   <div className="text-right mt-[-0.5em] pr-4">
+                      <div className="text-[clamp(10px,1.5vw,18px)] font-bold text-gold uppercase tracking-[0.6em]">Recovered for the injured</div>
+                   </div>
+                </div>
+             </div>
+
+             {/* DOSSIER CARD: $14.2M */}
+             <div className="monolith-layer absolute top-[40%] left-0 lg:-left-20 w-full max-w-lg glass-morphism p-10 md:p-14 rounded-[3.5rem] shadow-[0_60px_120px_rgba(0,0,0,0.5)] border border-white/5 z-30 group hover:-rotate-1 transition-all duration-1000">
+                <div className="flex items-center justify-between mb-12">
+                   <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10">
+                      <Scale className="w-8 h-8 text-gold" />
+                   </div>
+                   <div className="text-right font-mono">
+                      <div className="text-[10px] text-white/30 mb-1">CERTIFIED DOCKET</div>
+                      <div className="text-xs text-gold">#VG-2026-ARCHIVE-14.2</div>
+                   </div>
+                </div>
+                
+                <div className="space-y-4 mb-12">
+                   <div className="text-sm font-bold text-gold uppercase tracking-widest">Victory Case 03.2026</div>
+                   <div className="text-6xl md:text-8xl font-heading font-black text-white tracking-tighter">$14.2M</div>
+                   <div className="text-lg font-medium text-white/40 italic leading-tight">Full Policy Policy-Limit Settlement</div>
                 </div>
 
-                {/* Right Column: Layered Proof Points */}
-                <div className="lg:col-span-7 relative h-[500px] lg:h-[600px] mt-12 lg:mt-0">
-                    {/* Floating Policy Card */}
-                    <div className="result-card absolute top-4 right-0 w-full max-w-md glass-morphism p-10 md:p-14 rounded-[3rem] shadow-[0_50px_100px_rgba(10,17,40,0.12)] border-l-8 border-gold z-20 group hover:-translate-y-4 transition-all duration-700">
-                        <div className="flex items-center justify-between mb-10 text-gold">
-                            <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center border border-gold/20">
-                                <Scale className="w-8 h-8" />
-                            </div>
-                            <div className="text-right">
-                                <div className="text-[10px] font-black uppercase tracking-widest text-navy/40 mb-1">Case ID</div>
-                                <div className="text-xs font-bold text-navy">#VG-2026-14M</div>
-                            </div>
-                        </div>
-                        
-                        <div className="space-y-2">
-                            <div className="text-6xl md:text-7xl font-heading font-black text-navy tracking-tighter">$14.2M</div>
-                            <div className="text-lg font-bold text-gold uppercase tracking-[0.2em]">Policy Settlement</div>
-                        </div>
-                        
-                        <div className="mt-12 pt-8 border-t border-navy/5 flex justify-between items-center text-[10px] font-black text-navy/30 uppercase tracking-tighter">
-                            <div className="flex items-center gap-2">
-                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                                <span>Certified Result // 03.2026</span>
-                            </div>
-                            <span className="hover:text-gold transition-colors cursor-help">Verify Docket</span>
-                        </div>
-                    </div>
-
-                    {/* Supporting Stat Badge */}
-                    <div className="result-card absolute bottom-4 left-0 lg:-left-20 bg-navy p-12 md:p-16 rounded-[3rem] text-white shadow-[0_40px_80px_rgba(10,17,40,0.4)] z-30 flex flex-col md:flex-row items-center gap-10 hover:scale-[1.02] transition-transform duration-700">
-                        <div className="text-center md:text-left md:border-r md:border-white/10 md:pr-12">
-                            <div className="text-7xl font-heading font-black text-white tracking-tighter">2,500<span className="text-gold">+</span></div>
-                            <div className="text-[10px] font-bold text-gold uppercase tracking-[0.4em] mt-2">Cases Won</div>
-                        </div>
-                        <div className="max-w-[180px] text-sm text-white/50 leading-relaxed font-medium text-center md:text-left italic">
-                            &ldquo;A decade of absolute advocacy and strategic dominance.&rdquo;
-                        </div>
-                    </div>
-
-                    {/* Decorative Elements */}
-                    <div className="absolute -bottom-10 -right-10 w-40 h-40 border-r border-b border-navy/5 pointer-events-none"></div>
+                <div className="pt-8 border-t border-white/5 flex items-center justify-between">
+                   <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                      <span className="text-[10px] font-black text-white/20 uppercase tracking-widest">Verified Restoration</span>
+                   </div>
+                   <div className="p-2 rounded-full hover:bg-gold/10 transition-colors cursor-help">
+                      <ArrowRight className="w-5 h-5 text-gold" />
+                   </div>
                 </div>
-            </div>
+             </div>
+
+             {/* SEAL OF AUTHORITY: 2,500+ */}
+             <div className="monolith-layer absolute bottom-0 right-0 lg:right-20 w-64 h-64 md:w-80 md:h-80 bg-[#0A1128] rounded-full border border-gold/20 shadow-[0_40px_80px_rgba(0,0,0,0.4)] z-40 flex items-center justify-center p-8 text-center group hover:scale-105 transition-transform duration-1000 overflow-hidden">
+                {/* Rotating Inner Border */}
+                <div className="absolute inset-2 border border-gold/10 rounded-full border-dashed animate-[spin_20s_linear_infinite] pointer-events-none" />
+                
+                <div className="relative z-10 transition-transform duration-700 group-hover:scale-110">
+                   <div className="text-5xl md:text-7xl font-heading font-black text-white tracking-tighter mb-2">2,500<span className="text-gold">+</span></div>
+                   <div className="text-[10px] md:text-xs font-bold text-gold uppercase tracking-[0.4em] leading-tight">Successful <br/> Litigations</div>
+                   
+                   <div className="mt-8 text-[9px] text-white/30 font-medium max-w-[120px] mx-auto leading-relaxed border-t border-white/5 pt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                      &ldquo;Dominating the legal architectural landscape.&rdquo;
+                   </div>
+                </div>
+             </div>
+
+          </div>
         </div>
       </div>
     </section>
