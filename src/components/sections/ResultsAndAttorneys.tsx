@@ -123,7 +123,7 @@ export const ResultsStats = () => {
                             <div className="text-[10px] font-bold text-gold uppercase tracking-[0.4em] mt-2">Cases Won</div>
                         </div>
                         <div className="max-w-[180px] text-sm text-white/50 leading-relaxed font-medium text-center md:text-left italic">
-                            "A decade of absolute advocacy and strategic dominance."
+                            &ldquo;A decade of absolute advocacy and strategic dominance.&rdquo;
                         </div>
                     </div>
 

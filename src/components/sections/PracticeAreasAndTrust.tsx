@@ -8,9 +8,6 @@ import {
   Globe, 
   ArrowRight, 
   Briefcase, 
-  Users2, 
-  Ship,
-  TrendingUp,
   ShieldAlert
 } from "lucide-react";
 import gsap from "gsap";
