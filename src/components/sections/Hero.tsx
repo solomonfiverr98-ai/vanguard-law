@@ -67,7 +67,7 @@ const Hero = () => {
   return (
     <section 
       ref={containerRef} 
-      className="relative min-h-[90dvh] w-full bg-navy overflow-hidden flex items-center pt-24 pb-12"
+      className="relative min-h-[90dvh] w-full bg-navy overflow-hidden flex items-center pt-36 md:pt-48 pb-12"
     >
       {/* Dynamic Background Accents */}
       <div className="hero-bg-accent absolute top-[-10%] right-[-10%] w-[60%] h-[80%] bg-gold/10 blur-[150px] rounded-full pointer-events-none" />
