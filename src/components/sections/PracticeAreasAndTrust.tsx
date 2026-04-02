@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import Link from "next/link";
 import { 
   Scale, 
@@ -8,8 +8,6 @@ import {
   Globe, 
   Briefcase, 
   ShieldAlert,
-  X,
-  CheckCircle2,
   Info
 } from "lucide-react";
 import gsap from "gsap";
@@ -49,8 +47,7 @@ export const TrustBar = () => {
 
 export const PracticeAreas = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [flippedCardId, setFlippedCardId] = useState<string | null>(null);
-
+  
   const PRACTICE_AREAS = [
     {
       id: "injury",
@@ -208,69 +205,17 @@ export const PracticeAreas = () => {
                     </div>
 
                     <div className="mt-auto flex items-center justify-between">
-                      <button
-                        onClick={() => setFlippedCardId(area.id)}
+                      <Link
+                        href="#contact"
                         className="group/btn inline-flex items-center gap-4 text-gold font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs hover:gap-6 transition-all"
                       >
-                        View Strategy <Info className="w-4 h-4 transition-transform group-hover/btn:scale-110" />
-                      </button>
+                        Inquire Case <Info className="w-4 h-4 transition-transform group-hover/btn:scale-110" />
+                      </Link>
                       
                       {area.id === "assets" && (
                          <Globe className="w-12 h-12 text-gold/5 group-hover:text-gold/20 transition-all duration-700 group-hover:rotate-12" />
                       )}
                     </div>
-                  </div>
-              </div>
-
-              {/* Back Side (Slide-up Overlay) */}
-              <div className={`absolute inset-0 w-full h-full z-30 bg-navy border-2 border-gold/30 p-8 md:p-12 lg:p-16 flex flex-col overflow-y-auto transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] shadow-[0_0_100px_rgba(212,175,55,0.15)] ${flippedCardId === area.id ? 'translate-y-0' : 'translate-y-full'}`}>
-                  <div className="flex justify-between items-start mb-8 md:mb-12">
-                    <div>
-                      <div className="text-gold font-bold text-[10px] uppercase tracking-[0.4em] mb-2">Case Blueprint</div>
-                      <h3 className="text-white text-3xl md:text-4xl font-heading font-black tracking-tighter uppercase">{area.title}</h3>
-                    </div>
-                    <button 
-                      onClick={() => setFlippedCardId(null)}
-                      className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-gold hover:border-gold transition-all"
-                    >
-                      <X className="w-5 h-5 md:w-6 md:h-6" />
-                    </button>
-                  </div>
-
-                  <div className="space-y-8 md:space-y-10 flex-grow">
-                    <section>
-                      <h4 className="text-gold text-[10px] font-bold uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
-                        <div className="w-8 h-px bg-gold/30" /> How We Help
-                      </h4>
-                      <p className="text-white/80 text-sm md:text-base leading-relaxed font-body">
-                        {area.howWeHelp}
-                      </p>
-                    </section>
-
-                    <section className="flex-grow">
-                      <h4 className="text-gold text-[10px] font-bold uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
-                        <div className="w-8 h-px bg-gold/30" /> Required Evidence
-                      </h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
-                        {area.evidence.map((item, idx) => (
-                          <div key={idx} className="flex items-start gap-3 group/item">
-                            <CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" />
-                            <span className="text-white/60 text-[11px] md:text-xs font-medium tracking-tight group-hover/item:text-white transition-colors">{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </section>
-                  </div>
-
-                  <div className="mt-8 pt-8 border-t border-white/10 flex flex-col sm:flex-row gap-6 items-center justify-between">
-                    <Link 
-                      href="#contact" 
-                      onClick={() => setFlippedCardId(null)}
-                      className="w-full sm:w-auto px-8 py-4 bg-gold text-white font-bold uppercase tracking-[0.2em] text-[10px] md:text-sm hover:brightness-110 transition-all text-center rounded-xl"
-                    >
-                      Inquire Case
-                    </Link>
-                    <div className="text-white/30 text-[9px] uppercase tracking-[0.4em] hidden md:block">Uncompromising Advocacy</div>
                   </div>
               </div>
             </div>
