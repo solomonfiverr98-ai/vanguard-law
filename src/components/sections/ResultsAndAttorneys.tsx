@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { TrendingUp, Users, Clock, ShieldCheck, Scale, ArrowRight } from "lucide-react";
 import gsap from "gsap";
@@ -128,6 +128,7 @@ export const ResultsStats = () => {
 
 export const Attorneys = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
 
   const attorneys = [
     {
@@ -136,6 +137,7 @@ export const Attorneys = () => {
       specialty: "Criminal Defense & Civil Rights",
       experience: "25+ Yrs Mastery",
       image: "/attorney_portrait_1_1774992135179.png",
+      dossier: "James Blackwell is the vanguard of criminal defense. A formidable trial lawyer with over 25 years of experience, he is known for taking on high-profile, high-stakes matters with tact and unyielding persistence. His record of securing acquittals in the most complex prosecutions places him in an elite tier."
     },
     {
       name: "Sarah Chen, Esq.",
@@ -143,6 +145,7 @@ export const Attorneys = () => {
       specialty: "High-Stakes Corporate & IP",
       experience: "15+ Yrs Precision",
       image: "/attorney_portrait_2_1774992156703.png",
+      dossier: "Sarah Chen leads Vanguard's Corporate Intelligence and Intellectual Property division. Recognized globally for her airtight contracts and fierce litigation in patent disputes, she builds and defends the invisible architecture of her billionaire clients' empires."
     },
     {
       name: "Marcus Williams, Esq.",
@@ -150,6 +153,31 @@ export const Attorneys = () => {
       specialty: "Catastrophic Personal Injury",
       experience: "10+ Yrs Aggressive Advocacy",
       image: "/attorney_portrait_3_1774992179889.png",
+      dossier: "Marcus Williams brings relentless rigor to personal injury and wrongful death cases. Operating with precision and an unshakeable moral compass, he has orchestrated over $100M in settlements to date, fighting fiercely against multinational insurance conglomerates."
+    },
+    {
+      name: "Victoria Sterling, Esq.",
+      role: "Senior Counsel",
+      specialty: "International Arbitration",
+      experience: "20+ Yrs Global Reach",
+      image: "/attorney_portrait_4_1775125415340.png",
+      dossier: "Victoria Sterling navigates the labyrinth of international law. Fluent in five languages and seasoned in international tribunals, she orchestrates cross-border dispute resolutions for sovereign entities and global megacorporations."
+    },
+    {
+      name: "Nathaniel Vance, Esq.",
+      role: "Of Counsel",
+      specialty: "White-Collar Defense",
+      experience: "30+ Yrs Tactical Insight",
+      image: "/attorney_portrait_5_1775125428486.png",
+      dossier: "A former federal prosecutor, Nathaniel Vance provides unmatched strategic defense against governmental investigations. His deep understanding of regulatory enforcement makes him the premier shield for executives navigating crisis scenarios."
+    },
+    {
+      name: "Elena Rostova, Esq.",
+      role: "Associate Attorney",
+      specialty: "Mergers & Acquisitions",
+      experience: "8+ Yrs Structuring",
+      image: "/attorney_portrait_6_1775125444833.png",
+      dossier: "Elena Rostova specializes in the flawless execution of hostile takeovers and billion-dollar mergers. Known for her analytical agility, she anticipates systemic risks and pioneers innovative deal architectures for Fortune 500 companies."
     },
   ];
 
@@ -172,59 +200,107 @@ export const Attorneys = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {attorneys.map((atty, i) => (
             <div 
               key={i} 
-              className="attorney-card group relative h-[650px] w-full overflow-hidden rounded-[3rem] shadow-2xl transition-all duration-700 hover:-translate-y-4 shadow-navy/5"
+              className="group relative h-[650px] w-full perspective-[1000px]"
             >
-              {/* Portrait Image */}
-              <div className="absolute inset-0 z-0">
-                <Image 
-                  src={atty.image} 
-                  alt={atty.name}
-                  fill
-                  className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                />
-                {/* Contrast Gradient for White Labeling */}
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/30 to-transparent z-10" />
-              </div>
-              
-              {/* Content Reveal Overlay */}
-              <div className="relative z-20 h-full p-10 flex flex-col justify-end text-white">
-                <div className="text-gold font-bold text-[10px] uppercase tracking-[0.3em] mb-4 overflow-hidden">
-                   <div className="translate-y-full group-hover:translate-y-0 transition-transform duration-500">{atty.role}</div>
-                </div>
+              <div className={`relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] ${flippedIndex === i ? '[transform:rotateY(180deg)]' : ''}`}>
                 
-                <h3 className="font-heading text-3xl font-black mb-6 tracking-tighter leading-none">
-                  {atty.name}
-                </h3>
-                
-                {/* Expandable Info on Hover */}
-                <div className="h-0 opacity-0 overflow-hidden group-hover:h-auto group-hover:opacity-100 transition-all duration-700 ease-out border-t border-white/20 pt-8 mt-4">
-                  <div className="space-y-6">
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center">
-                         <ShieldCheck className="w-5 h-5 text-gold" />
-                      </div>
-                      <div className="text-sm font-medium tracking-tight text-white/80">{atty.specialty}</div>
+                {/* Front Side */}
+                <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [-webkit-backface-visibility:hidden] overflow-hidden rounded-[3rem] shadow-2xl transition-all duration-700 group-hover:-translate-y-4 shadow-navy/5">
+                  {/* Portrait Image */}
+                  <div className="absolute inset-0 z-0 bg-navy/5">
+                    <Image 
+                      src={atty.image} 
+                      alt={atty.name}
+                      fill
+                      className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                    />
+                    {/* Contrast Gradient for White Labeling */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/30 to-transparent z-10" />
+                  </div>
+                  
+                  {/* Content Reveal Overlay */}
+                  <div className="relative z-20 h-full p-10 flex flex-col justify-end text-white">
+                    <div className="text-gold font-bold text-[10px] uppercase tracking-[0.3em] mb-4 overflow-hidden">
+                       <div className="translate-y-full group-hover:translate-y-0 transition-transform duration-500">{atty.role}</div>
                     </div>
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center">
-                         <Clock className="w-5 h-5 text-gold" />
+                    
+                    <h3 className="font-heading text-3xl font-black mb-6 tracking-tighter leading-none">
+                      {atty.name}
+                    </h3>
+                    
+                    {/* Expandable Info on Hover */}
+                    <div className="h-0 opacity-0 overflow-hidden group-hover:h-auto group-hover:opacity-100 transition-all duration-700 ease-out border-t border-white/20 pt-8 mt-4">
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-4">
+                          <div className="w-10 h-10 shrink-0 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center">
+                             <ShieldCheck className="w-5 h-5 text-gold" />
+                          </div>
+                          <div className="text-sm font-medium tracking-tight text-white/80">{atty.specialty}</div>
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <div className="w-10 h-10 shrink-0 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center">
+                             <Clock className="w-5 h-5 text-gold" />
+                          </div>
+                          <div className="text-sm font-medium tracking-tight text-white/50">{atty.experience}</div>
+                        </div>
                       </div>
-                      <div className="text-sm font-medium tracking-tight text-white/50">{atty.experience}</div>
+                      
+                      <div 
+                        onClick={() => setFlippedIndex(i)}
+                        className="mt-8 flex items-center gap-3 text-gold text-[10px] font-black uppercase tracking-widest cursor-pointer hover:text-white transition-colors duration-300 w-fit"
+                      >
+                        Full Dossier <ArrowRight className="w-3.5 h-3.5" />
+                      </div>
                     </div>
                   </div>
                   
-                  <div className="mt-10 flex items-center gap-3 text-gold text-[10px] font-black uppercase tracking-widest cursor-pointer hover:text-white transition-colors duration-300">
-                    Full Dossier <ArrowRight className="w-3.5 h-3.5" />
-                  </div>
+                  {/* Bottom Gold Line */}
+                  <div className="absolute bottom-0 left-0 w-0 h-[8px] bg-gold transition-all duration-700 group-hover:w-full z-30" />
                 </div>
+
+                {/* Back Side */}
+                <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [-webkit-backface-visibility:hidden] [transform:rotateY(180deg)] bg-navy rounded-[3rem] shadow-2xl border border-white/10 p-10 flex flex-col justify-between overflow-hidden">
+                   {/* Background element */}
+                   <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 text-white/[0.02] text-[15rem] font-bold pointer-events-none lowercase tracking-tighter mix-blend-overlay">law</div>
+                   
+                   <div className="relative z-10 flex flex-col h-full">
+                     <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-gold/20 bg-gold/5 mb-6 w-fit">
+                       <span className="text-gold text-[9px] font-bold tracking-[0.2em] uppercase">Confidential Dossier</span>
+                     </div>
+                     <h3 className="font-heading text-3xl font-black mb-1 tracking-tighter leading-none text-white">
+                        {atty.name}
+                     </h3>
+                     <div className="text-gold/80 font-bold text-xs uppercase tracking-widest mb-6">{atty.role}</div>
+                     <div className="w-12 h-px bg-gold/30 mb-6" />
+                     <p className="text-white/80 font-body text-sm leading-relaxed mb-6 flex-grow">
+                        {atty.dossier}
+                     </p>
+                     
+                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-white/10 pt-6">
+                        <div>
+                           <div className="text-[9px] text-white/40 uppercase tracking-widest mb-1">Focus</div>
+                           <div className="text-xs text-white/90 font-medium">{atty.specialty}</div>
+                        </div>
+                        <div>
+                           <div className="text-[9px] text-white/40 uppercase tracking-widest mb-1">Tenure</div>
+                           <div className="text-xs text-white/90 font-medium">{atty.experience}</div>
+                        </div>
+                     </div>
+                   </div>
+
+                   <button 
+                     onClick={() => setFlippedIndex(null)}
+                     className="mt-8 relative z-10 w-full py-4 rounded-xl border border-gold/20 text-gold text-xs font-bold uppercase tracking-[0.2em] hover:bg-gold hover:text-navy transition-colors duration-300"
+                   >
+                     Return to Council
+                   </button>
+                </div>
+
               </div>
-              
-              {/* Bottom Gold Line */}
-              <div className="absolute bottom-0 left-0 w-0 h-[8px] bg-gold transition-all duration-700 group-hover:w-full z-30" />
             </div>
           ))}
         </div>

@@ -1,6 +1,7 @@
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
 import { TrustBar, PracticeAreas } from "@/components/sections/PracticeAreasAndTrust";
+import { AboutVanguard } from "@/components/sections/AboutVanguard";
 import { ResultsStats, Attorneys } from "@/components/sections/ResultsAndAttorneys";
 import { Testimonials, FreeConsultation } from "@/components/sections/TestimonialsAndForm";
 import { FAQ, Footer } from "@/components/sections/FAQAndFooter";
@@ -12,6 +13,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <TrustBar />
+      <AboutVanguard />
       <PracticeAreas />
       <ResultsStats />
       <Attorneys />
