@@ -165,44 +165,19 @@ export const PracticeAreas = () => {
                   )}
                   {area.id === "injury" && <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent z-10" />}
                   
-                  <div className={`relative z-20 h-full p-8 md:p-12 lg:p-16 flex flex-col ${area.id === "family" || area.id === "assets" || area.id === "immigration" ? "justify-start" : "justify-end"}`}>
-                    {area.id === "family" && (
-                      <div className="flex items-center justify-between mb-10">
-                        <div className="w-12 h-px bg-gold/50" />
-                        <div className="text-[9px] font-black text-gold uppercase tracking-[0.4em]">Private Client</div>
-                      </div>
-                    )}
-                    {area.id === "assets" && (
-                      <div className="inline-flex py-1 px-3 rounded bg-gold text-white text-[8px] font-black uppercase tracking-[0.2em] mb-6 shadow-xl shadow-gold/20 w-fit">Offshore Mastery</div>
-                    )}
-
-                    <div className={`${area.id === "injury" ? "w-16 h-16 md:w-20 md:h-20" : "w-14 h-14"} bg-gold rounded-[1.5rem] md:rounded-[2rem] flex items-center justify-center mb-8 shadow-2xl shadow-gold/30 group-hover:-translate-y-2 transition-transform duration-700`}>
-                      <area.icon className={`${area.id === "injury" ? "w-8 h-8 md:w-10 md:h-10" : "w-7 h-7"} text-white`} />
+                  <div className="relative z-20 h-full p-8 md:p-10 lg:p-12 flex flex-col justify-end">
+                    <div className="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-[1rem] md:rounded-[1.2rem] lg:rounded-[1.5rem] flex items-center justify-center mb-6 shadow-[inset_0_2px_4px_rgba(255,255,255,0.5),inset_0_-4px_8px_rgba(0,0,0,0.3),0_15px_30px_rgba(212,175,55,0.4)] bg-gradient-to-br from-yellow-300 via-gold to-[#8B7322] border border-white/20 group-hover:-translate-y-2 group-hover:scale-105 transition-all duration-500 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                      <area.icon className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white drop-shadow-md relative z-10" />
                     </div>
 
-                    <h3 className={`text-white font-heading font-black mb-6 tracking-tighter uppercase ${area.id === "injury" ? "text-4xl md:text-6xl" : "text-3xl"}`}>
-                      {area.title.split(' ').map((word, i) => (
-                        <React.Fragment key={i}>
-                          {word} {i === 0 && area.title.split(' ').length > 1 && <br />}
-                        </React.Fragment>
-                      ))}
+                    <h3 className="text-white font-heading font-black mb-4 tracking-tighter uppercase text-3xl md:text-4xl lg:text-5xl">
+                      {area.title}
                     </h3>
 
-                    <p className={`text-white/60 mb-8 leading-relaxed font-body ${area.id === "injury" ? "text-base md:text-xl max-w-2xl" : "text-sm max-w-xs"}`}>
+                    <p className="text-white/70 mb-8 leading-relaxed font-body text-sm md:text-base max-w-sm">
                       {area.description}
                     </p>
-
-                    {area.id === "immigration" && (
-                       <p className="text-gold text-base leading-relaxed mb-6 italic font-heading font-bold">
-                         &quot;Precision at the border of freedom.&quot;
-                       </p>
-                    )}
-
-                    <div className="flex flex-wrap gap-2 mb-8">
-                      {area.tags.map((tag) => (
-                        <span key={tag} className="px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-white/50 text-[9px] md:text-[10px] font-bold uppercase tracking-widest">{tag}</span>
-                      ))}
-                    </div>
 
                     <div className="mt-auto flex items-center justify-between">
                       <Link
@@ -211,10 +186,6 @@ export const PracticeAreas = () => {
                       >
                         Inquire Case <Info className="w-4 h-4 transition-transform group-hover/btn:scale-110" />
                       </Link>
-                      
-                      {area.id === "assets" && (
-                         <Globe className="w-12 h-12 text-gold/5 group-hover:text-gold/20 transition-all duration-700 group-hover:rotate-12" />
-                      )}
                     </div>
                   </div>
               </div>
