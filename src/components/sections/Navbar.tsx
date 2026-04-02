@@ -36,12 +36,12 @@ const Navbar = () => {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group relative" onClick={() => setMobileMenuOpen(false)}>
           <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500 scale-90 group-hover:scale-100 ${
-            isScrolled || mobileMenuOpen ? "bg-navy text-white shadow-lg shadow-navy/20" : "bg-white text-navy shadow-xl shadow-black/10"
+            mobileMenuOpen ? "bg-white text-navy" : isScrolled ? "bg-navy text-white shadow-lg shadow-navy/20" : "bg-white text-navy shadow-xl shadow-black/10"
           }`}>
             <Scale className="w-5 h-5" />
           </div>
           <span className={`font-heading text-xl md:text-2xl font-black tracking-tighter transition-colors duration-500 uppercase ${
-            isScrolled || mobileMenuOpen ? "text-navy" : "text-white"
+            mobileMenuOpen ? "text-white" : isScrolled ? "text-navy" : "text-white"
           }`}>
             Vanguard
           </span>
@@ -76,7 +76,7 @@ const Navbar = () => {
         {/* Mobile Toggle */}
         <button
           className={`lg:hidden p-3 rounded-xl transition-all ${
-            isScrolled || mobileMenuOpen ? "bg-navy text-white" : "bg-white text-navy"
+            mobileMenuOpen ? "bg-white/10 text-white backdrop-blur-md" : isScrolled ? "bg-navy text-white" : "bg-white text-navy"
           }`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
@@ -84,32 +84,44 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-white z-10 lg:hidden transition-all duration-700 ease-[cubic-bezier(0.16, 1, 0.3, 1)] ${
+        className={`fixed inset-0 bg-[#0A1128] z-10 lg:hidden transition-all duration-700 ease-[cubic-bezier(0.16, 1, 0.3, 1)] ${
           mobileMenuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
         }`}
       >
-        <div className="flex flex-col items-center justify-center h-full gap-8 px-8 pt-24 pb-32">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2" />
+        
+        <div className="relative flex flex-col items-center justify-center h-full gap-6 px-8 pt-20 pb-32 overflow-y-auto">
           {navLinks.map((link, i) => (
             <Link
               key={link.name}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className={`text-3xl md:text-5xl font-heading font-black text-navy hover:text-gold transition-all duration-300 ${
-                mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+              className={`text-3xl font-heading font-black tracking-tighter uppercase transition-all duration-300 ${
+                mobileMenuOpen 
+                  ? "translate-y-0 opacity-100 text-white hover:text-gold" 
+                  : "translate-y-10 opacity-0 text-white/50"
               }`}
-              style={{ transitionDelay: `${i * 100}ms` }}
+              style={{ transitionDelay: `${i * 75}ms` }}
             >
               {link.name}
             </Link>
           ))}
+          
+          <div className={`w-12 h-[1px] bg-gold/30 my-4 transition-all duration-1000 ${mobileMenuOpen ? "scale-x-100" : "scale-x-0"}`} />
+          
           <Link
             href="#contact"
             onClick={() => setMobileMenuOpen(false)}
-            className="mt-8 w-full max-w-sm text-center bg-navy text-white py-6 rounded-2xl text-xl font-bold uppercase tracking-widest shadow-2xl transition-all active:scale-95"
+            className={`mt-4 w-full max-w-xs text-center bg-gold text-navy py-5 rounded-2xl text-sm font-bold uppercase tracking-[0.2em] shadow-2xl transition-all active:scale-95 duration-500 ${
+              mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+            }`}
+            style={{ transitionDelay: `${navLinks.length * 75}ms` }}
           >
-            Get Consultation
+            Inquire Now
           </Link>
         </div>
       </div>
