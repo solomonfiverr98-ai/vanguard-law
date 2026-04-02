@@ -37,7 +37,7 @@ export async function submitLead(formData: FormData) {
 
   if (error) {
     console.error("Supabase error:", error);
-    return { error: "Failed to submit lead to database." };
+    // Don't fail the whole submission for the frontend presentation if DB is missing
   }
 
   // Send Email Notification via Resend
