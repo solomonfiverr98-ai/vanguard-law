@@ -55,39 +55,39 @@ export const ResultsStats = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
+        <div className="flex flex-col gap-20">
           
-          {/* Left Column: The Narrative */}
-          <div className="lg:col-span-12 xl:col-span-5 space-y-12 mb-20 lg:mb-0">
+          {/* Top Section: The Narrative Centered */}
+          <div className="max-w-4xl mx-auto text-center space-y-10">
             <div className="monolith-layer">
               <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-gold/20 bg-gold/5 mb-8">
                 <TrendingUp className="w-3.5 h-3.5 text-gold" />
                 <span className="text-gold text-[10px] font-bold tracking-[0.4em] uppercase">Uncompromising Victories</span>
               </div>
-              <h2 className="text-white text-[clamp(48px,9vw,120px)] font-heading font-black tracking-tighter leading-[0.8] mb-10">
+              <h2 className="text-white text-[clamp(48px,8vw,100px)] font-heading font-black tracking-tighter leading-[0.9] mb-8">
                 The Currency <br />
                 Of <span className="text-gold italic decoration-gold/20 underline underline-offset-[16px]">Excellence.</span>
               </h2>
-              <p className="text-white/40 text-xl md:text-2xl leading-relaxed max-w-xl font-body font-light">
+              <p className="text-white/40 text-xl md:text-2xl leading-relaxed mx-auto max-w-2xl font-body font-light">
                 Vanguard Law specializes in high-stakes litigation where restoration is not a request, but a requirement. Our legacy is written in the absolute advocacy of our clients.
               </p>
             </div>
-
-            <div className="monolith-layer flex items-center gap-6">
+            <div className="monolith-layer flex items-center justify-center gap-6">
                <div className="h-px w-20 bg-gold/30" />
                <span className="text-gold/40 text-[10px] font-black uppercase tracking-[0.5em]">Established Excellence</span>
+               <div className="h-px w-20 bg-gold/30" />
             </div>
           </div>
 
-          {/* Right Column: Clean Grid Layout */}
-          <div className="lg:col-span-12 xl:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-8 relative z-20 w-full mb-12 lg:mb-0">
+          {/* Bottom Section: Three Column Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-20 w-full">
              
-             {/* Total Restored block (spans both columns on md) */}
-             <div className="monolith-layer md:col-span-2 glass-morphism p-10 md:p-14 rounded-[3rem] shadow-2xl border border-white/5 flex flex-col justify-center items-center text-center bg-navy/80 backdrop-blur-xl group hover:border-gold/30 hover:shadow-[0_20px_60px_rgba(212,175,55,0.15)] transition-all duration-500">
-               <h3 className="text-[clamp(60px,10vw,120px)] font-heading font-black tracking-tighter leading-none text-white group-hover:scale-105 transition-transform duration-700">
+             {/* Total Restored block */}
+             <div className="monolith-layer glass-morphism p-10 lg:p-14 rounded-[3rem] shadow-2xl border border-white/5 flex flex-col justify-center items-center text-center bg-navy/80 backdrop-blur-xl group hover:border-gold/30 hover:shadow-[0_20px_60px_rgba(212,175,55,0.15)] transition-all duration-500 min-h-[350px]">
+               <h3 className="text-[clamp(60px,7vw,100px)] font-heading font-black tracking-tighter leading-none text-white group-hover:scale-105 transition-transform duration-700">
                   $250M<span className="text-gold">+</span>
                </h3>
-               <div className="mt-4 text-xs md:text-sm font-bold text-gold uppercase tracking-[0.6em]">Restored to our clients</div>
+               <div className="mt-6 text-xs font-bold text-gold uppercase tracking-[0.4em] leading-relaxed">Restored to <br/> our clients</div>
              </div>
 
              {/* DOSSIER CARD: $14.2M */}
@@ -104,7 +104,7 @@ export const ResultsStats = () => {
                 
                 <div className="space-y-4 mb-8">
                    <div className="text-[10px] font-bold text-gold uppercase tracking-[0.3em]">Victory Case 03.2026</div>
-                   <div className="text-5xl md:text-6xl font-heading font-black text-white tracking-tighter leading-none">$14.2M</div>
+                   <div className="text-5xl lg:text-6xl font-heading font-black text-white tracking-tighter leading-none">$14.2M</div>
                    <div className="text-sm font-medium text-white/50 leading-relaxed max-w-[200px]">Full Policy Limit Landscape Restoration</div>
                 </div>
 
@@ -123,7 +123,7 @@ export const ResultsStats = () => {
              <div className="monolith-layer glass-morphism p-10 rounded-[3rem] shadow-2xl border border-white/5 flex flex-col justify-center text-center bg-navy/80 group hover:border-gold/30 hover:shadow-[0_20px_40px_rgba(212,175,55,0.1)] transition-all duration-500 relative overflow-hidden backdrop-blur-xl min-h-[350px] items-center">
                 <div className="absolute inset-4 border border-gold/10 rounded-[2.5rem] border-dashed animate-[spin_40s_linear_infinite] pointer-events-none" />
                 <div className="relative z-10 transition-transform duration-700 group-hover:scale-110 flex flex-col items-center">
-                   <div className="text-6xl md:text-7xl font-heading font-black text-white tracking-tighter mb-4">2,500<span className="text-gold">+</span></div>
+                   <div className="text-5xl lg:text-6xl font-heading font-black text-white tracking-tighter mb-4">2,500<span className="text-gold">+</span></div>
                    <div className="text-[10px] md:text-xs font-bold text-gold uppercase tracking-[0.4em] leading-relaxed">Elite Legal <br/> Victories</div>
                    <div className="mt-8 text-[10px] text-white/30 font-medium max-w-[140px] mx-auto leading-relaxed border-t border-white/5 pt-6">
                       &ldquo;Dominating the architectural litigation landscape.&rdquo;
