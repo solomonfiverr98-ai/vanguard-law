@@ -90,8 +90,8 @@ export const PracticeAreas = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent z-10" />
             
             <div className="relative z-20 h-full p-8 md:p-16 flex flex-col justify-end">
-              <div className="w-16 h-16 md:w-20 md:h-20 bg-gold rounded-[1.5rem] md:rounded-[2rem] flex items-center justify-center mb-8 md:mb-10 shadow-2xl shadow-gold/30 group-hover:-translate-y-3 transition-transform duration-700">
-                <Gavel className="w-8 h-8 md:w-10 md:h-10 text-white" />
+              <div className="w-16 h-16 bg-gold rounded-[1.5rem] md:rounded-2xl flex items-center justify-center mb-8 md:mb-10 shadow-2xl shadow-gold/30 group-hover:-translate-y-3 transition-transform duration-700">
+                <Gavel className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-white text-4xl md:text-7xl font-heading font-black mb-6 md:mb-8 tracking-tighter uppercase">
                 Personal <br /> Injury
