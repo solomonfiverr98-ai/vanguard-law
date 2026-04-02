@@ -6,7 +6,6 @@ import {
   Scale, 
   Gavel, 
   Globe, 
-  ArrowRight, 
   Briefcase, 
   ShieldAlert,
   X,
