@@ -6,9 +6,9 @@ import {
   Scale, 
   Gavel, 
   Globe, 
+  ArrowRight, 
   Briefcase, 
-  ShieldAlert,
-  Info
+  ShieldAlert
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -47,75 +47,6 @@ export const TrustBar = () => {
 
 export const PracticeAreas = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  
-  const PRACTICE_AREAS = [
-    {
-      id: "injury",
-      title: "Personal Injury",
-      icon: Gavel,
-      description: "We advocate for victims of catastrophic negligence, ensuring the path to justice is absolute and uncompromising.",
-      tags: ["Wrongful Death", "Catastrophic Liability", "Neurological Trauma"],
-      image: "https://images.unsplash.com/photo-1549416878-b9ca35c2d47b?w=1200",
-      colSpan: "md:col-span-8",
-      rowSpan: "md:row-span-2",
-      howWeHelp: "We conduct exhaustive accident reconstruction, secure medical expert testimony, and negotiate directly with high-limit insurance carriers to ensure maximum recovery.",
-      evidence: ["Police & Incident Reports", "Comprehensive Medical Records", "Witness Contact Information", "Scene & Injury Photography", "Employment & Wage History"]
-    },
-    {
-      id: "criminal",
-      title: "Criminal Defense",
-      icon: ShieldAlert,
-      description: "Protecting your legacy with aggressive, elite defense strategies.",
-      tags: ["Federal Defense", "White Collar", "Asset Protection"],
-      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800",
-      colSpan: "md:col-span-4",
-      howWeHelp: "Our elite defense team deconstructs the prosecution's case, identifying constitutional violations and leveraging forensic technology to protect your freedom.",
-      evidence: ["Initial Statement of Facts", "Digital Correspondence Logs", "Surveillance & GPS Data", "Financial & Transaction Records", "Personal Character References"]
-    },
-    {
-      id: "corporate",
-      title: "Corporate Strategy",
-      icon: Briefcase,
-      description: "Navigating global regulatory landscapes and high-tier litigation.",
-      tags: ["M&A Advisory", "Venture Capital", "Compliance", "IP Protection"],
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800",
-      colSpan: "md:col-span-4",
-      howWeHelp: "We provide surgical risk mitigation and regulatory oversight, ensuring your international ventures are shielded from litigation and market volatility.",
-      evidence: ["Articles of Incorporation", "Partnership & Vendor Agreements", "IP Transition Certificates", "Historical Compliance Audits", "Consolidated Financial Statements"]
-    },
-    {
-      id: "family",
-      title: "Family Law",
-      icon: Scale,
-      description: "Guardianship and elite asset management during complex family transitions and high-net-worth divorce.",
-      tags: ["High-Net Divorce", "Asset Shielding", "Legacy Planning"],
-      colSpan: "md:col-span-4",
-      howWeHelp: "We specialize in the discrete management of high-net-worth transitions, prioritizing asset protection and the long-term stability of your legacy.",
-      evidence: ["Detailed Asset Schedules", "Trust & Estate Documents", "Prenuptial Agreements", "Custody Preference Outlines", "Certified Real Estate Valuations"]
-    },
-    {
-      id: "immigration",
-      title: "Immigration",
-      icon: Globe,
-      description: "Navigating professional visa pathways and high-net-worth residency with diplomatic precision.",
-      tags: ["Investor Visas", "Golden Visa Expertise"],
-      image: "https://images.unsplash.com/photo-1436450412740-6b988f486c6b?w=800",
-      colSpan: "md:col-span-4",
-      howWeHelp: "We navigate complex global visa pathways for investors and elite professionals, providing diplomatic precision and expedited processing.",
-      evidence: ["Full Passport History", "Investment Capital Proof", "Professional Credentials", "Custom Business Plans", "Clean Records Certification"]
-    },
-    {
-      id: "assets",
-      title: "Global Assets",
-      icon: Globe,
-      description: "Protecting international interests and offshore structures with surgical precision.",
-      tags: ["Offshore Trusts", "Asset Recovery"],
-      image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800",
-      colSpan: "md:col-span-4",
-      howWeHelp: "Our specialists implement offshore trust structures and international asset recovery strategies to safeguard your global interests from jurisdictional overreach.",
-      evidence: ["Bank & Brokerage Statements", "Entity Formation Documents", "Historical Tax Filings", "Jurisdiction Analysis Reports", "Beneficial Ownership Records"]
-    }
-  ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -150,47 +81,174 @@ export const PracticeAreas = () => {
         </div>
 
         <div className="bento-grid grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-auto md:auto-rows-[450px]">
-          {PRACTICE_AREAS.map((area) => (
+          {/* Main Card: Personal Injury */}
+          <div className="bento-card md:col-span-8 md:row-span-2 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-[0_40px_120px_rgba(10,17,40,0.15)] bg-navy border border-navy/5 min-h-[400px] md:min-h-0">
             <div 
-              key={area.id} 
-              className={`${area.colSpan} ${area.rowSpan || ""} group relative min-h-[500px] md:min-h-0 overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-[0_40px_120px_rgba(10,17,40,0.15)] bg-navy border border-navy/5 [transform:translateZ(0)]`}
-            >
-              {/* Front Side */}
-              <div className="absolute inset-0 w-full h-full flex flex-col">
-                  {area.image && (
-                    <div 
-                      className={`absolute inset-0 bg-cover bg-center ${area.id === "injury" ? "opacity-40" : "opacity-10"} mix-blend-overlay scale-110 group-hover:scale-100 transition-transform duration-1000 ease-out`} 
-                      style={{ backgroundImage: `url('${area.image}')` }}
-                    />
-                  )}
-                  {area.id === "injury" && <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent z-10" />}
-                  
-                  <div className="relative z-20 h-full p-8 md:p-10 lg:p-12 flex flex-col justify-end">
-                    <div className="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-[1rem] md:rounded-[1.2rem] lg:rounded-[1.5rem] flex items-center justify-center mb-6 shadow-[inset_0_2px_4px_rgba(255,255,255,0.5),inset_0_-4px_8px_rgba(0,0,0,0.3),0_15px_30px_rgba(212,175,55,0.4)] bg-gradient-to-br from-yellow-300 via-gold to-[#8B7322] border border-white/20 group-hover:-translate-y-2 group-hover:scale-105 transition-all duration-500 relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                      <area.icon className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white drop-shadow-md relative z-10" />
+              className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay scale-110 group-hover:scale-100 transition-transform duration-1000 ease-out" 
+              style={{ backgroundImage: "url('https://images.unsplash.com/photo-1549416878-b9ca35c2d47b?w=1200')" }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent z-10" />
+            
+            <div className="relative z-20 h-full p-8 md:p-16 flex flex-col justify-end">
+              <div className="w-16 h-16 md:w-20 md:h-20 bg-gold rounded-[1.5rem] md:rounded-[2rem] flex items-center justify-center mb-8 md:mb-10 shadow-2xl shadow-gold/30 group-hover:-translate-y-3 transition-transform duration-700">
+                <Gavel className="w-8 h-8 md:w-10 md:h-10 text-white" />
+              </div>
+              <h3 className="text-white text-4xl md:text-7xl font-heading font-black mb-6 md:mb-8 tracking-tighter uppercase">
+                Personal <br /> Injury
+              </h3>
+              <p className="text-white/60 text-base md:text-xl max-w-2xl mb-8 md:mb-10 leading-relaxed font-body">
+                We advocate for victims of catastrophic negligence, ensuring the path to justice is absolute and uncompromising.
+              </p>
+              <div className="flex flex-wrap gap-2 md:gap-4 mb-8 md:mb-12">
+                {["Wrongful Death", "Catastrophic Liability", "Neurological Trauma"].map((tag) => (
+                  <span key={tag} className="px-3 py-1.5 md:px-5 md:py-2 rounded-full border border-white/10 bg-white/5 text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest">{tag}</span>
+                ))}
+              </div>
+              <Link
+                href="#contact"
+                className="group/btn inline-flex items-center gap-6 text-gold font-bold uppercase tracking-[0.4em] text-sm hover:gap-8 transition-all"
+              >
+                Inquire Case <ArrowRight className="w-5 h-5 transition-transform group-hover/btn:translate-x-2" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Card: Criminal Defense */}
+          <div className="bento-card md:col-span-4 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-navy border border-navy/5 p-8 md:p-12 flex flex-col justify-between hover:shadow-2xl transition-all duration-700 min-h-[350px] md:min-h-0">
+            <div 
+              className="absolute inset-0 bg-cover bg-center opacity-10 group-hover:opacity-20 transition-opacity grayscale" 
+              style={{ backgroundImage: "url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800')" }}
+            />
+            <div className="relative z-10 flex flex-col h-full">
+              <div className="w-16 h-16 bg-white/5 backdrop-blur-md rounded-2xl flex items-center justify-center group-hover:bg-gold transition-colors duration-500 mb-10">
+                <ShieldAlert className="w-8 h-8 text-gold group-hover:text-white transition-colors" />
+              </div>
+              <div className="mt-auto">
+                <h3 className="text-white text-3xl font-heading font-black mb-6 tracking-tighter uppercase">
+                  Criminal <br /> Defense
+                </h3>
+                <p className="text-white/40 text-base leading-relaxed mb-10 font-body">
+                  Protecting your legacy with aggressive, elite defense strategies.
+                </p>
+                <div className="space-y-3 mb-10 border-l border-gold/20 pl-6">
+                  {["Federal Defense", "White Collar", "Asset Protection"].map(s => (
+                    <div key={s} className="flex items-center gap-3 text-gold/60 text-[10px] font-bold uppercase tracking-widest">
+                      {s}
                     </div>
-
-                    <h3 className="text-white font-heading font-black mb-4 tracking-tighter uppercase text-3xl md:text-4xl lg:text-5xl">
-                      {area.title}
-                    </h3>
-
-                    <p className="text-white/70 mb-8 leading-relaxed font-body text-sm md:text-base max-w-sm">
-                      {area.description}
-                    </p>
-
-                    <div className="mt-auto flex items-center justify-between">
-                      <Link
-                        href="#contact"
-                        className="group/btn inline-flex items-center gap-4 text-gold font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs hover:gap-6 transition-all"
-                      >
-                        Inquire Case <Info className="w-4 h-4 transition-transform group-hover/btn:scale-110" />
-                      </Link>
-                    </div>
-                  </div>
+                  ))}
+                </div>
+                <Link href="#contact" className="group/btn flex items-center gap-4 text-gold text-[10px] font-bold uppercase tracking-widest transition-all hover:gap-6">
+                  Inquire Case <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                </Link>
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Card: Corporate Strategy */}
+          <div className="bento-card md:col-span-4 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-gold p-8 md:p-12 flex flex-col justify-between transition-all duration-700 hover:brightness-110 min-h-[350px] md:min-h-0">
+            <div 
+              className="absolute inset-0 bg-cover bg-center opacity-20 mix-blend-overlay group-hover:scale-105 transition-transform duration-1000" 
+              style={{ backgroundImage: "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800')" }}
+            />
+            <div className="relative z-10 flex flex-col h-full">
+              <div className="w-16 h-16 bg-navy rounded-2xl flex items-center justify-center mb-10">
+                <Briefcase className="w-8 h-8 text-gold" />
+              </div>
+               <h3 className="text-white text-3xl font-heading font-black mb-6 tracking-tighter uppercase">
+                 Corporate <br /> Strategy
+               </h3>
+               <p className="text-white/90 text-base leading-relaxed mb-10 font-body">
+                 Navigating global regulatory landscapes and high-tier litigation.
+               </p>
+               <div className="grid grid-cols-2 gap-2 mb-10">
+                  {["M&A Advisory", "Venture Capital", "Compliance", "IP Protection"].map(s => (
+                    <div key={s} className="px-3 py-1.5 rounded-lg bg-white/10 text-white text-[9px] font-bold uppercase tracking-widest text-center whitespace-nowrap">{s}</div>
+                  ))}
+               </div>
+               <Link href="#contact" className="mt-auto group/btn flex items-center gap-4 text-white text-[10px] font-bold uppercase tracking-[0.3em] transition-all hover:gap-6">
+                  Inquire Case <ArrowRight className="w-3 h-3 transition-transform group-hover/btn:translate-x-1" />
+               </Link>
+            </div>
+          </div>
+
+          {/* Card: Family Law - Navy Contrast */}
+          <div className="bento-card md:col-span-4 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-navy shadow-[0_40px_80px_rgba(10,17,40,0.3)] p-8 md:p-12 flex flex-col justify-between hover:shadow-2xl transition-all duration-700 border border-white/5 min-h-[350px] md:min-h-0">
+             <div className="h-full flex flex-col">
+                <div className="flex items-center justify-between mb-10">
+                  <div className="w-12 h-px bg-gold/50" />
+                  <div className="text-[9px] font-black text-gold uppercase tracking-[0.4em]">Private Client</div>
+                </div>
+                <h3 className="text-white text-3xl font-heading font-black tracking-tight group-hover:text-gold transition-colors mb-6 uppercase">Family Law</h3>
+                <p className="text-white/60 text-sm leading-relaxed mb-10 font-body">
+                  Guardianship and elite asset management during complex family transitions and high-net-worth divorce.
+                </p>
+                <div className="space-y-4 mb-auto">
+                   <div className="flex flex-wrap gap-2">
+                      {["High-Net Divorce", "Asset Shielding", "Legacy Planning"].map(tag => (
+                        <span key={tag} className="px-3 py-1 bg-white/5 text-white/50 text-[9px] font-bold uppercase tracking-widest rounded-full border border-white/10">{tag}</span>
+                      ))}
+                   </div>
+                </div>
+                <Link href="#contact" className="mt-12 group/btn flex items-center gap-4 text-gold text-[10px] font-bold uppercase tracking-[0.3em] transition-all hover:gap-6">
+                  Inquire Case <ArrowRight className="w-3 h-3 transition-transform group-hover/btn:translate-x-1" />
+                </Link>
+             </div>
+          </div>
+
+          {/* Card: Immigration */}
+          <div className="bento-card md:col-span-4 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-navy p-8 md:p-12 flex flex-col justify-between min-h-[350px] md:min-h-0">
+             <div 
+               className="absolute inset-0 bg-cover bg-center opacity-10 grayscale" 
+               style={{ backgroundImage: "url('https://images.unsplash.com/photo-1436450412740-6b988f486c6b?w=800')" }}
+             />
+             <div className="relative z-10 h-full flex flex-col text-left">
+               <h3 className="text-white text-3xl font-heading font-black tracking-tight group-hover:text-gold transition-colors mb-6 uppercase">Immigration</h3>
+               <div className="w-full h-px bg-white/10 mb-8" />
+               <p className="text-white/40 text-sm leading-relaxed mb-6 font-body">
+                 Navigating professional visa pathways and high-net-worth residency with diplomatic precision.
+               </p>
+               <p className="text-gold text-base leading-relaxed mb-auto italic font-heading font-bold">
+                 &quot;Precision at the border of freedom.&quot;
+               </p>
+               <div className="mt-12 flex justify-between items-center bg-white/5 p-4 rounded-2xl border border-white/5">
+                  <div className="space-y-1">
+                    <div className="text-white text-[9px] font-bold uppercase tracking-widest">Investor Visa Patterns</div>
+                    <div className="text-white/40 text-[8px] font-medium uppercase tracking-widest leading-none">EB-5 / Golden Visa Expertise</div>
+                  </div>
+                  <Link href="#contact" className="group/btn w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-gold hover:border-gold transition-all">
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:rotate-[-45deg]" />
+                  </Link>
+               </div>
+             </div>
+          </div>
+
+          {/* Card: Global Assets - Enhanced Contrast */}
+          <div className="bento-card md:col-span-4 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-navy p-8 md:p-12 flex flex-col justify-between hover:shadow-[0_40px_100px_rgba(212,175,55,0.2)] transition-all duration-700 border border-white/10 min-h-[350px] md:min-h-0">
+             <div 
+               className="absolute inset-0 bg-cover bg-center opacity-10 group-hover:opacity-25 transition-all duration-1000 grayscale hover:grayscale-0 scale-110 group-hover:scale-100" 
+               style={{ backgroundImage: "url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800')" }}
+             />
+             <div className="relative z-10">
+                <div className="inline-flex py-1 px-3 rounded bg-gold text-white text-[8px] font-black uppercase tracking-[0.2em] mb-6 shadow-xl shadow-gold/20">Offshore Mastery</div>
+                <h3 className="text-gold text-3xl font-heading font-black tracking-tight mb-6 uppercase">Global Assets</h3>
+                <p className="text-white/60 text-sm leading-relaxed mb-8 font-body">
+                  Protecting international interests and offshore structures with surgical precision.
+                </p>
+                <div className="space-y-2">
+                   {["Offshore Trusts", "Asset Recovery", "Multi-Jurisdiction"].map(s => (
+                     <div key={s} className="flex items-center gap-2 text-white/40 group-hover:text-gold/60 text-[9px] font-bold uppercase tracking-widest transition-colors">
+                       <div className="w-3 h-px bg-gold/30" /> {s}
+                     </div>
+                   ))}
+                </div>
+             </div>
+             <div className="relative z-10 mt-auto flex items-end justify-between">
+                <Link href="#contact" className="group/btn flex items-center gap-4 text-gold text-[10px] font-bold uppercase tracking-[0.3em] transition-all hover:gap-6">
+                  Inquire Case <ArrowRight className="w-3 h-3 transition-transform group-hover/btn:translate-x-1" />
+                </Link>
+                <Globe className="w-16 h-16 text-gold/5 group-hover:text-gold/20 transition-all duration-700 group-hover:rotate-12" />
+             </div>
+          </div>
         </div>
       </div>
     </section>
