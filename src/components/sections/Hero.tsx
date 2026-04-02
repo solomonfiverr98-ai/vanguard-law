@@ -76,7 +76,7 @@ const Hero = () => {
       <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 w-full flex flex-col lg:flex-row items-center gap-16 lg:gap-8">
         
         {/* Left: Text Content (Asymmetrical) */}
-        <div className="w-full lg:w-[60%] order-2 lg:order-1">
+        <div className="w-full lg:w-[60%]">
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-gold/20 bg-gold/5 mb-8 fade-up">
             <div className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
             <span className="text-gold text-[10px] md:text-[11px] font-bold tracking-[0.3em] uppercase">
@@ -120,26 +120,26 @@ const Hero = () => {
           {/* Luxury Trust Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-10 border-t border-white/5 fade-up">
              <div>
-                <div className="text-3xl font-heading font-black text-white">$250M+</div>
+                <div className="text-2xl lg:text-3xl font-heading font-black text-white">$250M+</div>
                 <div className="text-[10px] text-white/40 uppercase tracking-widest mt-1">Recovered</div>
              </div>
              <div>
-                <div className="text-3xl font-heading font-black text-white">99%</div>
+                <div className="text-2xl lg:text-3xl font-heading font-black text-white">99%</div>
                 <div className="text-[10px] text-white/40 uppercase tracking-widest mt-1">Success Rate</div>
              </div>
              <div>
-                <div className="text-3xl font-heading font-black text-white">24/7</div>
+                <div className="text-2xl lg:text-3xl font-heading font-black text-white">24/7</div>
                 <div className="text-[10px] text-white/40 uppercase tracking-widest mt-1">Availability</div>
              </div>
              <div>
-                <div className="text-3xl font-heading font-black text-gold">2026 Nominee</div>
+                <div className="text-2xl lg:text-3xl font-heading font-black text-gold">2026 Nominee</div>
                 <div className="text-[10px] text-white/40 uppercase tracking-widest mt-1">Best Law Firm</div>
              </div>
           </div>
         </div>
 
         {/* Right: Attorney Portrait Cutout */}
-        <div className="w-full lg:w-[40%] order-1 lg:order-2 flex justify-center lg:justify-end">
+        <div className="w-full lg:w-[40%] flex justify-center lg:justify-end mt-12 lg:mt-0">
           <div ref={portraitRef} className="relative w-full max-w-[500px] aspect-[4/5]">
             {/* Portrait Placeholder Background */}
             <div className="absolute inset-x-0 bottom-0 top-[20%] bg-gradient-to-t from-gold/20 via-transparent to-transparent rounded-[40px] opacity-50 blur-[40px]" />

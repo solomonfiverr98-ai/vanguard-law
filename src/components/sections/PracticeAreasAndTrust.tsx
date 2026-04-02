@@ -156,13 +156,13 @@ export const PracticeAreas = () => {
           {PRACTICE_AREAS.map((area) => (
             <div 
               key={area.id} 
-              className={`${area.colSpan} ${area.rowSpan || ""} group relative perspective-[1500px] min-h-[450px] md:min-h-0`}
+              className={`${area.colSpan} ${area.rowSpan || ""} group relative perspective-[1500px] min-h-[500px] md:min-h-0`}
             >
               <div 
                 className={`relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] ${flippedCardId === area.id ? "[transform:rotateY(180deg)]" : ""}`}
               >
                 {/* Front Side */}
-                <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-[0_40px_120px_rgba(10,17,40,0.15)] bg-navy border border-navy/5 flex flex-col">
+                <div className={`absolute inset-0 w-full h-full [backface-visibility:hidden] overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-[0_40px_120px_rgba(10,17,40,0.15)] bg-navy border border-navy/5 flex flex-col ${flippedCardId === area.id ? 'pointer-events-none' : ''}`}>
                   {area.image && (
                     <div 
                       className={`absolute inset-0 bg-cover bg-center ${area.id === "injury" ? "opacity-40" : "opacity-10"} mix-blend-overlay scale-110 group-hover:scale-100 transition-transform duration-1000 ease-out`} 
@@ -226,7 +226,7 @@ export const PracticeAreas = () => {
                 </div>
 
                 {/* Back Side */}
-                <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-navy border-2 border-gold/30 p-8 md:p-12 lg:p-16 flex flex-col shadow-[0_0_100px_rgba(212,175,55,0.15)]">
+                <div className={`absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] overflow-y-auto rounded-[2rem] md:rounded-[3rem] bg-navy border-2 border-gold/30 p-8 md:p-12 lg:p-16 flex flex-col shadow-[0_0_100px_rgba(212,175,55,0.15)] ${flippedCardId === area.id ? '' : 'pointer-events-none'}`}>
                   <div className="flex justify-between items-start mb-8 md:mb-12">
                     <div>
                       <div className="text-gold font-bold text-[10px] uppercase tracking-[0.4em] mb-2">Case Blueprint</div>

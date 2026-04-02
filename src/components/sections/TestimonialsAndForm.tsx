@@ -133,20 +133,31 @@ export const FreeConsultation = () => {
 
   if (isSuccess) {
      return (
-       <section id="contact" className="bg-navy py-24 md:py-32 scroll-mt-24 md:scroll-mt-32 relative text-white text-center">
-         <div className="max-w-4xl mx-auto px-6">
-            <CheckCircle2 className="w-20 h-20 text-gold mx-auto mb-8 animate-bounce" />
-            <h2 className="text-5xl font-heading font-bold mb-6">Consultation Scheduled.</h2>
-            <p className="text-xl text-white/60 mb-12 font-body max-w-xl mx-auto">
-              Thank you for trusting Vanguard Law. One of our specialist attorneys will review 
-              your case and contact you within 24 business hours.
-            </p>
-            <button 
-              onClick={() => setIsSuccess(false)}
-              className="btn-gold px-12 py-4"
-            >
-              Submit Another Inquiry
-            </button>
+       <section id="contact" className="bg-navy py-24 md:py-32 scroll-mt-24 md:scroll-mt-32 relative text-white">
+         <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-center">
+           <div className="w-full max-w-2xl bg-white rounded-[2.5rem] p-10 md:p-16 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)] border border-white/10 text-center relative overflow-hidden">
+             
+             <div className="absolute inset-0 bg-gold/5" />
+             
+             <div className="relative z-10 flex flex-col items-center">
+                <div className="w-20 h-20 md:w-24 md:h-24 bg-gold/10 rounded-full flex items-center justify-center mb-8">
+                  <CheckCircle2 className="w-10 h-10 md:w-12 md:h-12 text-gold animate-bounce" />
+                </div>
+                
+                <h2 className="text-navy text-3xl md:text-5xl font-heading font-black mb-6">Consultation Secure.</h2>
+                
+                <p className="text-lg text-navy/70 mb-10 font-body max-w-lg mx-auto leading-relaxed">
+                  Thank you for trusting Vanguard Law. Your information is protected under attorney-client privilege. Our elite legal team will review your case file and contact you within <strong>24 business hours</strong>.
+                </p>
+                
+                <button 
+                  onClick={() => setIsSuccess(false)}
+                  className="bg-navy hover:bg-navy/90 text-white px-10 py-5 rounded-full text-sm lg:text-base font-bold uppercase tracking-widest transition-all shadow-xl active:scale-95"
+                >
+                  Return to Inquiry
+                </button>
+             </div>
+           </div>
          </div>
        </section>
      );
