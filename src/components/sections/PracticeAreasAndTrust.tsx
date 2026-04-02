@@ -50,17 +50,7 @@ export const PracticeAreas = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".bento-card", {
-        y: 60,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 1.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".bento-grid",
-          start: "top 80%",
-        }
-      });
+      // Animation removed as per request to make cards show up immediately
     }, containerRef);
     return () => ctx.revert();
   }, []);
