@@ -124,9 +124,9 @@ export const FreeConsultation = () => {
       setIsSuccess(true);
     } else if (result.error) {
       if (typeof result.error === "object") {
-         setErrors(result.error);
+         setErrors(result.error as Record<string, string[]>);
       } else {
-         alert(result.error);
+         alert(result.error as string);
       }
     }
   }

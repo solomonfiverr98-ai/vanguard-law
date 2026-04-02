@@ -13,7 +13,7 @@ const leadSchema = z.object({
   source: z.string().optional().default("vanguard-landing-page"),
 });
 
-export async function submitLead(formData: FormData) {
+export async function submitLead(formData: FormData): Promise<{ success: boolean; error?: Record<string, string[] | undefined> | string }> {
   const rawData = {
     name: formData.get("name"),
     email: formData.get("email"),
@@ -27,6 +27,7 @@ export async function submitLead(formData: FormData) {
 
   if (!validatedFields.success) {
     return {
+      success: false,
       error: validatedFields.error.flatten().fieldErrors,
     };
   }
