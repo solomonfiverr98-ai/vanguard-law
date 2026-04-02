@@ -13,18 +13,6 @@ export const ResultsStats = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".monolith-layer", {
-        y: 100,
-        opacity: 0,
-        stagger: 0.15,
-        duration: 2,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 70%",
-        }
-      });
-
       // Subtle parallax for background text
       gsap.to(".parallax-bg", {
         y: -100,
@@ -40,7 +28,7 @@ export const ResultsStats = () => {
   }, []);
 
   return (
-    <section id="results" ref={containerRef} className="bg-navy pt-52 pb-32 md:pt-64 md:pb-48 relative overflow-hidden mt-[-1px] z-10">
+    <section id="results" ref={containerRef} className="bg-navy py-24 md:py-32 relative overflow-hidden mt-[-1px] z-10">
       {/* Architectural Background Layers */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="parallax-bg absolute top-80 left-0 text-white/[0.01] text-[40vw] font-black pointer-events-none select-none uppercase tracking-tighter leading-none -translate-x-1/4 whitespace-nowrap">
@@ -83,7 +71,7 @@ export const ResultsStats = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-20 w-full">
              
              {/* Total Restored block */}
-             <div className="monolith-layer glass-morphism p-10 lg:p-14 rounded-[3rem] shadow-2xl border border-white/5 flex flex-col justify-center items-center text-center bg-navy/80 backdrop-blur-xl group hover:border-gold/30 hover:shadow-[0_20px_60px_rgba(212,175,55,0.15)] transition-all duration-500 min-h-[350px]">
+             <div className="monolith-layer glass-morphism p-10 lg:p-14 rounded-[3rem] shadow-2xl border border-white flex flex-col justify-center items-center text-center bg-navy/80 backdrop-blur-xl group hover:border-gold hover:shadow-[0_20px_60px_rgba(212,175,55,0.15)] transition-all duration-500 min-h-[350px]">
                <h3 className="text-[clamp(60px,7vw,100px)] font-heading font-black tracking-tighter leading-none text-white group-hover:scale-105 transition-transform duration-700">
                   $250M<span className="text-gold">+</span>
                </h3>
@@ -91,7 +79,7 @@ export const ResultsStats = () => {
              </div>
 
              {/* DOSSIER CARD: $14.2M */}
-             <div className="monolith-layer glass-morphism p-10 rounded-[3rem] shadow-2xl border border-white/5 bg-navy/80 backdrop-blur-xl group hover:border-gold/30 hover:shadow-[0_20px_40px_rgba(212,175,55,0.1)] transition-all duration-500 flex flex-col justify-between min-h-[350px]">
+             <div className="monolith-layer glass-morphism p-10 rounded-[3rem] shadow-2xl border border-white bg-navy/80 backdrop-blur-xl group hover:border-gold hover:shadow-[0_20px_40px_rgba(212,175,55,0.1)] transition-all duration-500 flex flex-col justify-between min-h-[350px]">
                 <div className="flex items-center justify-between mb-8">
                    <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center border border-gold/20">
                       <Scale className="w-6 h-6 text-gold" />
@@ -120,7 +108,7 @@ export const ResultsStats = () => {
              </div>
 
              {/* SEAL OF AUTHORITY: 2,500+ */}
-             <div className="monolith-layer glass-morphism p-10 rounded-[3rem] shadow-2xl border border-white/5 flex flex-col justify-center text-center bg-navy/80 group hover:border-gold/30 hover:shadow-[0_20px_40px_rgba(212,175,55,0.1)] transition-all duration-500 relative overflow-hidden backdrop-blur-xl min-h-[350px] items-center">
+             <div className="monolith-layer glass-morphism p-10 rounded-[3rem] shadow-2xl border border-white flex flex-col justify-center text-center bg-navy/80 group hover:border-gold hover:shadow-[0_20px_40px_rgba(212,175,55,0.1)] transition-all duration-500 relative overflow-hidden backdrop-blur-xl min-h-[350px] items-center">
                 <div className="absolute inset-4 border border-gold/10 rounded-[2.5rem] border-dashed animate-[spin_40s_linear_infinite] pointer-events-none" />
                 <div className="relative z-10 transition-transform duration-700 group-hover:scale-110 flex flex-col items-center">
                    <div className="text-5xl lg:text-6xl font-heading font-black text-white tracking-tighter mb-4">2,500<span className="text-gold">+</span></div>
@@ -140,23 +128,6 @@ export const ResultsStats = () => {
 
 export const Attorneys = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".attorney-card", {
-        y: 60,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 1.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%",
-        }
-      });
-    }, containerRef);
-    return () => ctx.revert();
-  }, []);
 
   const attorneys = [
     {
@@ -183,7 +154,7 @@ export const Attorneys = () => {
   ];
 
   return (
-    <section id="attorneys" ref={containerRef} className="bg-white pb-20 md:pb-32 overflow-hidden relative">
+    <section id="attorneys" ref={containerRef} className="bg-white py-24 md:py-32 overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="mb-20 flex flex-col lg:flex-row lg:items-end justify-between gap-12">
           <div className="max-w-2xl">

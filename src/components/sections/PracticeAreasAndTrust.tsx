@@ -56,7 +56,7 @@ export const PracticeAreas = () => {
   }, []);
 
   return (
-    <section id="expertise" ref={containerRef} className="bg-white pt-24 pb-48 md:pt-40 md:pb-64 overflow-hidden relative z-20">
+    <section id="expertise" ref={containerRef} className="bg-white py-24 md:py-32 overflow-hidden relative z-20">
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none overflow-hidden">
         <div className="absolute top-[10%] left-[-10%] w-full h-full border border-navy rotate-12" />
         <div className="absolute top-[20%] left-[-20%] w-full h-full border border-navy -rotate-12" />
