@@ -32,16 +32,16 @@ const Navbar = () => {
           : "py-8 bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+      <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group relative">
+        <Link href="/" className="flex items-center gap-3 group relative" onClick={() => setMobileMenuOpen(false)}>
           <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500 scale-90 group-hover:scale-100 ${
-            isScrolled ? "bg-navy text-white shadow-lg shadow-navy/20" : "bg-white text-navy shadow-xl shadow-black/10"
+            isScrolled || mobileMenuOpen ? "bg-navy text-white shadow-lg shadow-navy/20" : "bg-white text-navy shadow-xl shadow-black/10"
           }`}>
             <Scale className="w-5 h-5" />
           </div>
           <span className={`font-heading text-xl md:text-2xl font-black tracking-tighter transition-colors duration-500 uppercase ${
-            isScrolled ? "text-navy" : "text-white"
+            isScrolled || mobileMenuOpen ? "text-navy" : "text-white"
           }`}>
             Vanguard
           </span>
@@ -76,7 +76,7 @@ const Navbar = () => {
         {/* Mobile Toggle */}
         <button
           className={`lg:hidden p-3 rounded-xl transition-all ${
-            isScrolled ? "bg-navy text-white" : "bg-white text-navy"
+            isScrolled || mobileMenuOpen ? "bg-navy text-white" : "bg-white text-navy"
           }`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
@@ -86,11 +86,11 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 top-[72px] bg-white z-[90] lg:hidden transition-all duration-700 ease-[cubic-bezier(0.16, 1, 0.3, 1)] ${
+        className={`fixed inset-0 bg-white z-10 lg:hidden transition-all duration-700 ease-[cubic-bezier(0.16, 1, 0.3, 1)] ${
           mobileMenuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
         }`}
       >
-        <div className="flex flex-col items-center justify-center h-full gap-8 px-8 pb-32">
+        <div className="flex flex-col items-center justify-center h-full gap-8 px-8 pt-24 pb-32">
           {navLinks.map((link, i) => (
             <Link
               key={link.name}

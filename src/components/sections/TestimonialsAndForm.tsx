@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Star, Quote, ChevronLeft, ChevronRight, Lock, Loader2, CheckCircle2 } from "lucide-react";
+import { Star, Quote, ChevronLeft, ChevronRight, Lock, Loader2, CheckCircle2, ArrowRight } from "lucide-react";
 import { submitLead } from "@/app/actions";
 
 export const Testimonials = () => {
@@ -131,37 +131,7 @@ export const FreeConsultation = () => {
     }
   }
 
-  if (isSuccess) {
-     return (
-       <section id="contact" className="bg-navy py-24 md:py-32 scroll-mt-24 md:scroll-mt-32 relative text-white">
-         <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-center">
-           <div className="w-full max-w-2xl bg-white rounded-[2.5rem] p-10 md:p-16 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)] border border-white/10 text-center relative overflow-hidden">
-             
-             <div className="absolute inset-0 bg-gold/5" />
-             
-             <div className="relative z-10 flex flex-col items-center">
-                <div className="w-20 h-20 md:w-24 md:h-24 bg-gold/10 rounded-full flex items-center justify-center mb-8">
-                  <CheckCircle2 className="w-10 h-10 md:w-12 md:h-12 text-gold animate-bounce" />
-                </div>
-                
-                <h2 className="text-navy text-3xl md:text-5xl font-heading font-black mb-6">Consultation Secure.</h2>
-                
-                <p className="text-lg text-navy/70 mb-10 font-body max-w-lg mx-auto leading-relaxed">
-                  Thank you for trusting Vanguard Law. Your information is protected under attorney-client privilege. Our elite legal team will review your case file and contact you within <strong>24 business hours</strong>.
-                </p>
-                
-                <button 
-                  onClick={() => setIsSuccess(false)}
-                  className="bg-navy hover:bg-navy/90 text-white px-10 py-5 rounded-full text-sm lg:text-base font-bold uppercase tracking-widest transition-all shadow-xl active:scale-95"
-                >
-                  Return to Inquiry
-                </button>
-             </div>
-           </div>
-         </div>
-       </section>
-     );
-  }
+
 
   return (
     <section id="contact" className="relative bg-navy py-24 md:py-40 scroll-mt-24 md:scroll-mt-32 overflow-hidden">
@@ -191,8 +161,25 @@ export const FreeConsultation = () => {
         </div>
 
         {/* Form Card */}
-        <div className="w-full max-w-2xl bg-white rounded-[2.5rem] p-8 md:p-12 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)] border border-white/10">
-          <form className="space-y-8" onSubmit={handleSubmit}>
+        <div className="w-full max-w-2xl bg-white rounded-[2.5rem] p-8 md:p-12 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)] border border-white/10 relative overflow-hidden">
+          {isSuccess ? (
+             <div className="relative z-10 flex flex-col items-center justify-center py-8 text-center animate-in fade-in zoom-in duration-500">
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-gold/10 rounded-full flex items-center justify-center mb-6">
+                  <CheckCircle2 className="w-8 h-8 md:w-10 md:h-10 text-gold animate-bounce" />
+                </div>
+                <h3 className="text-navy text-2xl md:text-4xl font-heading font-black mb-4">Consultation Secure.</h3>
+                <p className="text-sm md:text-base text-navy/70 mb-8 font-body max-w-md mx-auto leading-relaxed">
+                  Thank you for trusting Vanguard Law. Your information is protected under attorney-client privilege. Our elite legal team will review your case file and contact you within <strong>24 business hours</strong>.
+                </p>
+                <button 
+                  onClick={() => setIsSuccess(false)}
+                  className="bg-navy hover:bg-navy/90 text-white px-8 py-4 rounded-full text-xs md:text-sm font-bold uppercase tracking-widest transition-all shadow-lg active:scale-95"
+                >
+                  Return to Inquiry
+                </button>
+             </div>
+          ) : (
+            <form className="space-y-8" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-2">
                 <label className="text-[11px] font-bold text-navy uppercase tracking-widest block font-body">Full Name *</label>
@@ -256,14 +243,14 @@ export const FreeConsultation = () => {
             <button 
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-gold hover:brightness-110 disabled:opacity-70 disabled:hover:brightness-100 text-white rounded-full py-5 text-xl font-heading font-bold shadow-xl shadow-gold/20 transition-all flex items-center justify-center gap-3 active:scale-95"
+              className="w-full bg-gold hover:brightness-110 disabled:opacity-70 disabled:hover:brightness-100 text-white rounded-full py-4 text-sm md:text-base font-bold uppercase tracking-widest shadow-xl shadow-gold/20 transition-all flex items-center justify-center gap-3 active:scale-95"
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="w-6 h-6 animate-spin" /> Processing...
+                  <Loader2 className="w-5 h-5 md:w-6 md:h-6 animate-spin" /> Processing...
                 </>
               ) : (
-                "Schedule Free Consultation →"
+                <>Schedule Consultation <ArrowRight className="w-4 h-4" /></>
               )}
             </button>
 
@@ -271,6 +258,7 @@ export const FreeConsultation = () => {
               <Lock className="w-3 h-3" /> All consultations are 100% confidential. Attorney-client privilege applies.
             </div>
           </form>
+          )}
         </div>
       </div>
     </section>
