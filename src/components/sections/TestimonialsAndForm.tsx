@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Star, Quote, ChevronLeft, ChevronRight, Lock, Loader2, CheckCircle2 } from "lucide-react";
 import { submitLead } from "@/app/actions";
@@ -38,12 +38,6 @@ export const Testimonials = () => {
     },
   ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [testimonials.length]);
 
   return (
     <section id="testimonials" className="bg-surface py-24 md:py-32 scroll-mt-24 md:scroll-mt-32 overflow-hidden">

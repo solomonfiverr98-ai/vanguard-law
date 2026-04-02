@@ -80,28 +80,28 @@ export const PracticeAreas = () => {
           </p>
         </div>
 
-        <div className="bento-grid grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[450px]">
+        <div className="bento-grid grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-auto md:auto-rows-[450px]">
           {/* Main Card: Personal Injury */}
-          <div className="bento-card md:col-span-8 md:row-span-2 relative group overflow-hidden rounded-[3rem] shadow-[0_40px_120px_rgba(10,17,40,0.15)] bg-navy border border-navy/5">
+          <div className="bento-card md:col-span-8 md:row-span-2 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-[0_40px_120px_rgba(10,17,40,0.15)] bg-navy border border-navy/5 min-h-[400px] md:min-h-0">
             <div 
               className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay scale-110 group-hover:scale-100 transition-transform duration-1000 ease-out" 
               style={{ backgroundImage: "url('https://images.unsplash.com/photo-1549416878-b9ca35c2d47b?w=1200')" }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent z-10" />
             
-            <div className="relative z-20 h-full p-12 md:p-16 flex flex-col justify-end">
-              <div className="w-20 h-20 bg-gold rounded-[2rem] flex items-center justify-center mb-10 shadow-2xl shadow-gold/30 group-hover:-translate-y-3 transition-transform duration-700">
-                <Gavel className="w-10 h-10 text-white" />
+            <div className="relative z-20 h-full p-8 md:p-16 flex flex-col justify-end">
+              <div className="w-16 h-16 md:w-20 md:h-20 bg-gold rounded-[1.5rem] md:rounded-[2rem] flex items-center justify-center mb-8 md:mb-10 shadow-2xl shadow-gold/30 group-hover:-translate-y-3 transition-transform duration-700">
+                <Gavel className="w-8 h-8 md:w-10 md:h-10 text-white" />
               </div>
-              <h3 className="text-white text-5xl md:text-7xl font-heading font-black mb-8 tracking-tighter uppercase">
+              <h3 className="text-white text-4xl md:text-7xl font-heading font-black mb-6 md:mb-8 tracking-tighter uppercase">
                 Personal <br /> Injury
               </h3>
-              <p className="text-white/60 text-xl max-w-2xl mb-10 leading-relaxed font-body">
+              <p className="text-white/60 text-base md:text-xl max-w-2xl mb-8 md:mb-10 leading-relaxed font-body">
                 We advocate for victims of catastrophic negligence, ensuring the path to justice is absolute and uncompromising.
               </p>
-              <div className="flex flex-wrap gap-4 mb-12">
+              <div className="flex flex-wrap gap-2 md:gap-4 mb-8 md:mb-12">
                 {["Wrongful Death", "Catastrophic Liability", "Neurological Trauma"].map((tag) => (
-                  <span key={tag} className="px-5 py-2 rounded-full border border-white/10 bg-white/5 text-white/50 text-xs font-bold uppercase tracking-widest">{tag}</span>
+                  <span key={tag} className="px-3 py-1.5 md:px-5 md:py-2 rounded-full border border-white/10 bg-white/5 text-white/50 text-[10px] md:text-xs font-bold uppercase tracking-widest">{tag}</span>
                 ))}
               </div>
               <Link
@@ -114,7 +114,7 @@ export const PracticeAreas = () => {
           </div>
 
           {/* Card: Criminal Defense */}
-          <div className="bento-card md:col-span-4 relative group overflow-hidden rounded-[3rem] bg-navy border border-navy/5 p-12 flex flex-col justify-between hover:shadow-2xl transition-all duration-700">
+          <div className="bento-card md:col-span-4 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-navy border border-navy/5 p-8 md:p-12 flex flex-col justify-between hover:shadow-2xl transition-all duration-700 min-h-[350px] md:min-h-0">
             <div 
               className="absolute inset-0 bg-cover bg-center opacity-10 group-hover:opacity-20 transition-opacity grayscale" 
               style={{ backgroundImage: "url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800')" }}
@@ -145,7 +145,7 @@ export const PracticeAreas = () => {
           </div>
 
           {/* Card: Corporate Strategy */}
-          <div className="bento-card md:col-span-4 relative group overflow-hidden rounded-[3rem] bg-gold p-12 flex flex-col justify-between transition-all duration-700 hover:brightness-110">
+          <div className="bento-card md:col-span-4 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-gold p-8 md:p-12 flex flex-col justify-between transition-all duration-700 hover:brightness-110 min-h-[350px] md:min-h-0">
             <div 
               className="absolute inset-0 bg-cover bg-center opacity-20 mix-blend-overlay group-hover:scale-105 transition-transform duration-1000" 
               style={{ backgroundImage: "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800')" }}
@@ -172,7 +172,7 @@ export const PracticeAreas = () => {
           </div>
 
           {/* Card: Family Law - Navy Contrast */}
-          <div className="bento-card md:col-span-4 relative group overflow-hidden rounded-[3rem] bg-navy shadow-[0_40px_80px_rgba(10,17,40,0.3)] p-12 flex flex-col justify-between hover:shadow-2xl transition-all duration-700 border border-white/5">
+          <div className="bento-card md:col-span-4 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-navy shadow-[0_40px_80px_rgba(10,17,40,0.3)] p-8 md:p-12 flex flex-col justify-between hover:shadow-2xl transition-all duration-700 border border-white/5 min-h-[350px] md:min-h-0">
              <div className="h-full flex flex-col">
                 <div className="flex items-center justify-between mb-10">
                   <div className="w-12 h-px bg-gold/50" />
@@ -196,7 +196,7 @@ export const PracticeAreas = () => {
           </div>
 
           {/* Card: Immigration */}
-          <div className="bento-card md:col-span-4 relative group overflow-hidden rounded-[3rem] bg-navy p-12 flex flex-col justify-between">
+          <div className="bento-card md:col-span-4 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-navy p-8 md:p-12 flex flex-col justify-between min-h-[350px] md:min-h-0">
              <div 
                className="absolute inset-0 bg-cover bg-center opacity-10 grayscale" 
                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1436450412740-6b988f486c6b?w=800')" }}
@@ -223,7 +223,7 @@ export const PracticeAreas = () => {
           </div>
 
           {/* Card: Global Assets - Enhanced Contrast */}
-          <div className="bento-card md:col-span-4 relative group overflow-hidden rounded-[3rem] bg-navy p-12 flex flex-col justify-between hover:shadow-[0_40px_100px_rgba(212,175,55,0.2)] transition-all duration-700 border border-white/10">
+          <div className="bento-card md:col-span-4 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-navy p-8 md:p-12 flex flex-col justify-between hover:shadow-[0_40px_100px_rgba(212,175,55,0.2)] transition-all duration-700 border border-white/10 min-h-[350px] md:min-h-0">
              <div 
                className="absolute inset-0 bg-cover bg-center opacity-10 group-hover:opacity-25 transition-all duration-1000 grayscale hover:grayscale-0 scale-110 group-hover:scale-100" 
                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800')" }}
