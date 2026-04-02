@@ -120,8 +120,8 @@ export const PracticeAreas = () => {
               style={{ backgroundImage: "url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800')" }}
             />
             <div className="relative z-10 flex flex-col h-full">
-              <div className="w-16 h-16 bg-white/5 backdrop-blur-md rounded-2xl flex items-center justify-center group-hover:bg-gold transition-colors duration-500 mb-10">
-                <ShieldAlert className="w-8 h-8 text-gold group-hover:text-white transition-colors" />
+              <div className="w-14 h-14 md:w-16 md:h-16 bg-white/5 backdrop-blur-md rounded-[1.5rem] md:rounded-2xl flex items-center justify-center group-hover:bg-gold transition-colors duration-500 mb-8 md:mb-10">
+                <ShieldAlert className="w-6 h-6 md:w-8 md:h-8 text-gold group-hover:text-white transition-colors" />
               </div>
               <div className="mt-auto">
                 <h3 className="text-white text-3xl font-heading font-black mb-6 tracking-tighter uppercase">
@@ -151,8 +151,8 @@ export const PracticeAreas = () => {
               style={{ backgroundImage: "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800')" }}
             />
             <div className="relative z-10 flex flex-col h-full">
-              <div className="w-16 h-16 bg-navy rounded-2xl flex items-center justify-center mb-10">
-                <Briefcase className="w-8 h-8 text-gold" />
+              <div className="w-14 h-14 md:w-16 md:h-16 bg-navy rounded-[1.5rem] md:rounded-2xl flex items-center justify-center mb-8 md:mb-10">
+                <Briefcase className="w-6 h-6 md:w-8 md:h-8 text-gold" />
               </div>
                <h3 className="text-white text-3xl font-heading font-black mb-6 tracking-tighter uppercase">
                  Corporate <br /> Strategy
