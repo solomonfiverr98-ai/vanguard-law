@@ -67,7 +67,7 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
 
 export const FAQ = () => {
   return (
-    <section id="faq" className="bg-white py-16 md:py-24">
+    <section id="faq" className="bg-white py-16 md:py-24 scroll-mt-24 md:scroll-mt-32">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-12">
           <span className="section-label">General Questions</span>

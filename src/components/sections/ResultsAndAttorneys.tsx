@@ -28,7 +28,7 @@ export const ResultsStats = () => {
   }, []);
 
   return (
-    <section id="results" ref={containerRef} className="bg-navy py-24 md:py-32 relative overflow-hidden mt-[-1px] z-10">
+    <section id="results" ref={containerRef} className="bg-navy py-24 md:py-32 scroll-mt-24 md:scroll-mt-32 relative overflow-hidden mt-[-1px] z-10">
       {/* Architectural Background Layers */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="parallax-bg absolute top-80 left-0 text-white/[0.01] text-[40vw] font-black pointer-events-none select-none uppercase tracking-tighter leading-none -translate-x-1/4 whitespace-nowrap">
@@ -182,7 +182,7 @@ export const Attorneys = () => {
   ];
 
   return (
-    <section id="attorneys" ref={containerRef} className="bg-white py-24 md:py-32 overflow-hidden relative">
+    <section id="attorneys" ref={containerRef} className="bg-white py-24 md:py-32 scroll-mt-24 md:scroll-mt-32 overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="mb-20 flex flex-col lg:flex-row lg:items-end justify-between gap-12">
           <div className="max-w-2xl">
@@ -233,7 +233,7 @@ export const Attorneys = () => {
                     </h3>
                     
                     {/* Expandable Info on Hover */}
-                    <div className="h-0 opacity-0 overflow-hidden group-hover:h-auto group-hover:opacity-100 transition-all duration-700 ease-out border-t border-white/20 pt-8 mt-4">
+                    <div className="h-auto opacity-100 lg:h-0 lg:opacity-0 overflow-hidden lg:group-hover:h-auto lg:group-hover:opacity-100 transition-all duration-700 ease-out border-t border-white/20 pt-8 mt-4">
                       <div className="space-y-4">
                         <div className="flex items-center gap-4">
                           <div className="w-10 h-10 shrink-0 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center">

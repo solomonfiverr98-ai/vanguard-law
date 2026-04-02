@@ -6,7 +6,7 @@ import { ShieldCheck, Scale, Award } from "lucide-react";
 
 export const AboutVanguard = () => {
   return (
-    <section id="about" className="bg-surface py-24 md:py-32 overflow-hidden relative">
+    <section id="about" className="bg-surface py-24 md:py-32 scroll-mt-24 md:scroll-mt-32 overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         <div className="flex flex-col lg:flex-row gap-16 items-center">
@@ -18,7 +18,7 @@ export const AboutVanguard = () => {
               <span className="text-navy text-[10px] font-bold tracking-[0.3em] uppercase">About Vanguard</span>
             </div>
             
-            <h2 className="text-navy text-[clamp(40px,5vw,70px)] font-heading font-black leading-[1] tracking-tighter">
+            <h2 className="text-navy text-[clamp(36px,8vw,70px)] font-heading font-black leading-[1] tracking-tighter">
               Redefining the <br /> <span className="text-gold italic">Legal Standard.</span>
             </h2>
             

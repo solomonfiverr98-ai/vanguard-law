@@ -46,7 +46,7 @@ export const Testimonials = () => {
   }, [testimonials.length]);
 
   return (
-    <section id="testimonials" className="bg-surface py-24 md:py-32 overflow-hidden">
+    <section id="testimonials" className="bg-surface py-24 md:py-32 scroll-mt-24 md:scroll-mt-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="mb-16 text-center">
           <span className="section-label">Client Testimonials</span>
@@ -139,7 +139,7 @@ export const FreeConsultation = () => {
 
   if (isSuccess) {
      return (
-       <section id="contact" className="bg-navy py-24 md:py-32 relative text-white text-center">
+       <section id="contact" className="bg-navy py-24 md:py-32 scroll-mt-24 md:scroll-mt-32 relative text-white text-center">
          <div className="max-w-4xl mx-auto px-6">
             <CheckCircle2 className="w-20 h-20 text-gold mx-auto mb-8 animate-bounce" />
             <h2 className="text-5xl font-heading font-bold mb-6">Consultation Scheduled.</h2>
@@ -159,7 +159,7 @@ export const FreeConsultation = () => {
   }
 
   return (
-    <section id="contact" className="relative bg-navy py-24 md:py-40 overflow-hidden">
+    <section id="contact" className="relative bg-navy py-24 md:py-40 scroll-mt-24 md:scroll-mt-32 overflow-hidden">
       {/* Background Image / Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-fixed opacity-20 pointer-events-none"

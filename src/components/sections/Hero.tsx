@@ -86,12 +86,12 @@ const Hero = () => {
 
           <h1 className="text-white font-heading font-black leading-[0.85] tracking-tighter mb-10">
             <div className="overflow-hidden">
-              <span className="mask-reveal inline-block text-[clamp(64px,11vw,120px)] select-none">
+              <span className="mask-reveal inline-block text-[clamp(46px,11vw,120px)] select-none">
                 PRECISION
               </span>
             </div>
             <div className="overflow-hidden mt-[-0.1em]">
-              <span className="mask-reveal inline-block text-[clamp(64px,11vw,120px)] italic text-gold select-none">
+              <span className="mask-reveal inline-block text-[clamp(46px,11vw,120px)] italic text-gold select-none">
                 {"// POWER"}
               </span>
             </div>
