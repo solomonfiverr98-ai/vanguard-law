@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Star, Quote, ChevronLeft, ChevronRight, Lock, Loader2, CheckCircle2, ArrowRight } from "lucide-react";
+import { Star, Quote, ChevronLeft, ChevronRight, Lock, Loader2, ArrowRight } from "lucide-react";
 import { submitLead } from "@/app/actions";
 
 export const Testimonials = () => {
@@ -107,8 +108,8 @@ export const Testimonials = () => {
 };
 
 export const FreeConsultation = () => {
+  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
   const [errors, setErrors] = useState<Record<string, string[]>>({});
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -121,7 +122,7 @@ export const FreeConsultation = () => {
     
     setIsSubmitting(false);
     if (result.success) {
-      setIsSuccess(true);
+      router.push("/success");
     } else if (result.error) {
       if (typeof result.error === "object") {
          setErrors(result.error as Record<string, string[]>);
@@ -162,24 +163,7 @@ export const FreeConsultation = () => {
 
         {/* Form Card */}
         <div className="w-full max-w-2xl bg-white rounded-[2.5rem] p-8 md:p-12 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)] border border-white/10 relative overflow-hidden">
-          {isSuccess ? (
-             <div className="relative z-10 flex flex-col items-center justify-center py-8 text-center animate-in fade-in zoom-in duration-500">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-gold/10 rounded-full flex items-center justify-center mb-6">
-                  <CheckCircle2 className="w-8 h-8 md:w-10 md:h-10 text-gold animate-bounce" />
-                </div>
-                <h3 className="text-navy text-2xl md:text-4xl font-heading font-black mb-4">Consultation Secure.</h3>
-                <p className="text-sm md:text-base text-navy/70 mb-8 font-body max-w-md mx-auto leading-relaxed">
-                  Thank you for trusting Vanguard Law. Your information is protected under attorney-client privilege. Our elite legal team will review your case file and contact you within <strong>24 business hours</strong>.
-                </p>
-                <button 
-                  onClick={() => setIsSuccess(false)}
-                  className="bg-navy hover:bg-navy/90 text-white px-8 py-4 rounded-full text-xs md:text-sm font-bold uppercase tracking-widest transition-all shadow-lg active:scale-95"
-                >
-                  Return to Inquiry
-                </button>
-             </div>
-          ) : (
-            <form className="space-y-8" onSubmit={handleSubmit}>
+          <form className="space-y-8" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-2">
                 <label className="text-[11px] font-bold text-navy uppercase tracking-widest block font-body">Full Name *</label>
@@ -258,7 +242,6 @@ export const FreeConsultation = () => {
               <Lock className="w-3 h-3" /> All consultations are 100% confidential. Attorney-client privilege applies.
             </div>
           </form>
-          )}
         </div>
       </div>
     </section>
