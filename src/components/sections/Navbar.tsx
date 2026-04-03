@@ -28,7 +28,7 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 w-full z-[100] transition-all duration-700 ease-[cubic-bezier(0.16, 1, 0.3, 1)] ${
         isScrolled && !mobileMenuOpen
-          ? "py-4 bg-white/70 backdrop-blur-xl border-b border-navy/5 shadow-[0_8px_32px_rgba(10,17,40,0.05)]" 
+          ? "py-4 bg-white/95 backdrop-blur-md border-b border-navy/10 shadow-[0_10px_40px_rgba(10,17,40,0.08)]" 
           : "py-8 bg-transparent"
       }`}
     >
@@ -86,8 +86,8 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-[150] bg-[#0A1128] lg:hidden transition-all duration-700 ease-[cubic-bezier(0.16, 1, 0.3, 1)] ${
-          mobileMenuOpen ? "translate-x-0 opacity-100 pointer-events-auto" : "translate-x-full opacity-0 pointer-events-none"
+        className={`fixed inset-0 z-[150] bg-[#0A1128] lg:hidden transition-all duration-500 ease-out ${
+          mobileMenuOpen ? "translate-x-0 pointer-events-auto" : "translate-x-full pointer-events-none"
         }`}
       >
         {/* Solid Background Layer to ensure no transparency */}

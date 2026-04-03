@@ -32,41 +32,54 @@ export async function submitLead(formData: FormData): Promise<{ success: boolean
     };
   }
 
-  const { error } = await supabase
-    .from("leads")
-    .insert([validatedFields.data]);
+  // Try to save to Supabase, but don't crash if config is missing
+  try {
+    if (supabase) {
+      const { error } = await supabase
+        .from("leads")
+        .insert([validatedFields.data]);
 
-  if (error) {
-    console.error("Supabase error:", error);
-    // Don't fail the whole submission for the frontend presentation if DB is missing
+      if (error) {
+        console.error("Supabase insert error:", error);
+      }
+    } else {
+      console.warn("Supabase client not initialized. Lead not saved to DB but proceeding to success state.");
+    }
+  } catch (err) {
+    console.error("Supabase operation crash:", err);
   }
+
 
   // Send Email Notification via Resend
   try {
-    await resend.emails.send({
-      from: "Vanguard Law <notifications@resend.dev>", // Replace with verified domain in production
-      to: ["solomonfiverr98@gmail.com"],
-      subject: `New Lead: ${validatedFields.data.practice_area} - ${validatedFields.data.name}`,
-      html: `
-        <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-          <h2 style="color: #1B2A4A;">New Consultation Request</h2>
-          <p><strong>Name:</strong> ${validatedFields.data.name}</p>
-          <p><strong>Email:</strong> ${validatedFields.data.email}</p>
-          <p><strong>Phone:</strong> ${validatedFields.data.phone || "N/A"}</p>
-          <p><strong>Practice Area:</strong> ${validatedFields.data.practice_area}</p>
-          <p><strong>Description:</strong></p>
-          <div style="background: #f9f9f9; padding: 15px; border-radius: 5px;">
-            ${validatedFields.data.case_description}
+    if (resend) {
+      await resend.emails.send({
+        from: "Vanguard Law <notifications@resend.dev>", // Replace with verified domain in production
+        to: ["solomonfiverr98@gmail.com"],
+        subject: `New Lead: ${validatedFields.data.practice_area} - ${validatedFields.data.name}`,
+        html: `
+          <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
+            <h2 style="color: #1B2A4A;">New Consultation Request</h2>
+            <p><strong>Name:</strong> ${validatedFields.data.name}</p>
+            <p><strong>Email:</strong> ${validatedFields.data.email}</p>
+            <p><strong>Phone:</strong> ${validatedFields.data.phone || "N/A"}</p>
+            <p><strong>Practice Area:</strong> ${validatedFields.data.practice_area}</p>
+            <p><strong>Description:</strong></p>
+            <div style="background: #f9f9f9; padding: 15px; border-radius: 5px;">
+              ${validatedFields.data.case_description}
+            </div>
+            <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
+            <p style="font-size: 12px; color: #666;">Source: ${validatedFields.data.source}</p>
           </div>
-          <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
-          <p style="font-size: 12px; color: #666;">Source: ${validatedFields.data.source}</p>
-        </div>
-      `,
-    });
+        `,
+      });
+    } else {
+      console.warn("Resend client not initialized. Skipping email notification.");
+    }
   } catch (emailError) {
     console.error("Resend error:", emailError);
-    // We don't return error here because the lead was already saved to DB
   }
+
 
   return { success: true };
 }
